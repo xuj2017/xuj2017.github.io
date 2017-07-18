@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/17/mianshi/index.html">
 <meta property="og:site_name" content="Xuj&#39;s Note">
 <meta property="og:description" content="说说你对闭包的理解使用闭包主要是为了设计私有的方法和变量。闭包的优点是可以避免全局变量的污染，缺点是闭包会常驻内存，会增大内存使用量，使用不当很容易造成内存泄露。 闭包有三个特性:  1.函数嵌套函数2.函数内部可以引用外部的参数和变量3.参数和变量不会被垃圾回收机制回收  请你谈谈Cookie的弊端cookie虽然在持久保存客户端数据提供了方便，分担了服务器存储的负担，但还是有很多局限性的。第一">
-<meta property="og:updated_time" content="2017-07-17T06:35:33.581Z">
+<meta property="og:updated_time" content="2017-07-18T05:43:38.246Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端面试题">
 <meta name="twitter:description" content="说说你对闭包的理解使用闭包主要是为了设计私有的方法和变量。闭包的优点是可以避免全局变量的污染，缺点是闭包会常驻内存，会增大内存使用量，使用不当很容易造成内存泄露。 闭包有三个特性:  1.函数嵌套函数2.函数内部可以引用外部的参数和变量3.参数和变量不会被垃圾回收机制回收  请你谈谈Cookie的弊端cookie虽然在持久保存客户端数据提供了方便，分担了服务器存储的负担，但还是有很多局限性的。第一">
@@ -341,9 +341,31 @@
 
           
             
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/07/17/mianshi/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/07/17/mianshi/" itemprop="commentsCount"></span>
+                </a>
+              
+            
           
 
           
+          
+             <span id="/2017/07/17/mianshi/" class="leancloud_visitors" data-flag-title="前端面试题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1131,17 +1153,17 @@ Last-Modified: $now // RFC1123 format
 <li>使用URL重写，将<code>session id</code>附在URL中</li>
 <li>使用隐藏表单字段,将<code>session id</code>放在隐藏的表单字段中一同提交</li>
 </ol>
-<h3 id="写一个function，清除字符串前后的空格。（兼容所有浏览器）"><a href="#写一个function，清除字符串前后的空格。（兼容所有浏览器）" class="headerlink" title="写一个function，清除字符串前后的空格。（兼容所有浏览器）"></a>写一个function，清除字符串前后的空格。（兼容所有浏览器）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function trim(str) &#123;</div><div class="line"></div><div class="line">    if (str &amp; typeof str === &quot;string&quot;) &#123;</div><div class="line"></div><div class="line">        return str.replace(/(^s*)|(s*)$/g,&quot;&quot;); //去除前后空白符</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="写一个function，清除字符串前后的空格。（兼容所有浏览器）"><a href="#写一个function，清除字符串前后的空格。（兼容所有浏览器）" class="headerlink" title="写一个function，清除字符串前后的空格。（兼容所有浏览器）"></a>写一个function，清除字符串前后的空格。（兼容所有浏览器）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params">str</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (str &amp; <span class="keyword">typeof</span> str === <span class="string">"string"</span>) &#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> str.replace(<span class="regexp">/(^s*)|(s*)$/g</span>,<span class="string">""</span>); <span class="comment">//去除前后空白符</span></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ol>
 <li>在数据集之中，选择一个元素作为”基准”（pivot）。 </li>
 <li>所有小于”基准”的元素，都移到”基准”的左边；所有大于”基准”的元素，都移到”基准”的右边。 </li>
 <li><p>对”基准”左边和右边的两个子集，不断重复第一步和第二步，直到所有子集只剩下一个元素为止。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"> function quickSort(arr)&#123;</div><div class="line">    if (arr.length &lt;= 1)&#123;return arr&#125;;</div><div class="line">    var pivotIndex = Math.floor(arr.length / 2);</div><div class="line">    var pivot = arr.splice(pivotIndex,1)[0];</div><div class="line">    var left = [];</div><div class="line">    var right = [];</div><div class="line">    for (var i = 0; i &lt; arr.length; i++)&#123;</div><div class="line">        if(arr[i] &lt; pivot) &#123;</div><div class="line">            left.push(arr[i]);</div><div class="line">        &#125;else&#123;</div><div class="line">            right.push(arr[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return quickSort(left).concat([pivot],quickSort(right));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (arr.length &lt;= <span class="number">1</span>)&#123;<span class="keyword">return</span> arr&#125;;</div><div class="line">    <span class="keyword">var</span> pivotIndex = <span class="built_in">Math</span>.floor(arr.length / <span class="number">2</span>);</div><div class="line">    <span class="keyword">var</span> pivot = arr.splice(pivotIndex,<span class="number">1</span>)[<span class="number">0</span>];</div><div class="line">    <span class="keyword">var</span> left = [];</div><div class="line">    <span class="keyword">var</span> right = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</div><div class="line">        <span class="keyword">if</span>(arr[i] &lt; pivot) &#123;</div><div class="line">            left.push(arr[i]);</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            right.push(arr[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> quickSort(left).concat([pivot],quickSort(right));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4></li>
 <li>创建一个新的数组存放结果。 </li>
 <li>创建一个空对象</li>
 <li><p>判断数组值是否已经保存在object中，未保存则push到新数组并用object[arrayItem]=1的方式记录保存</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> Array.prototype.unique3 = function()&#123;</div><div class="line">    var res = [];</div><div class="line">    var json = &#123;&#125;;</div><div class="line">    for(var i = 0; i &lt; this.length; i++)&#123;</div><div class="line">        if(!json[this[i]])&#123;</div><div class="line">            res.push(this[i]);</div><div class="line">            json[this[i]] = 1;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return res;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var arr = [112,112,34,&apos;你好&apos;,112,112,34,&apos;你好&apos;,&apos;str&apos;,&apos;str1&apos;];</div><div class="line">alert(arr.unique3());</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> <span class="built_in">Array</span>.prototype.unique3 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> res = [];</div><div class="line">    <span class="keyword">var</span> json = &#123;&#125;;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length; i++)&#123;</div><div class="line">        <span class="keyword">if</span>(!json[<span class="keyword">this</span>[i]])&#123;</div><div class="line">            res.push(<span class="keyword">this</span>[i]);</div><div class="line">            json[<span class="keyword">this</span>[i]] = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">112</span>,<span class="number">112</span>,<span class="number">34</span>,<span class="string">'你好'</span>,<span class="number">112</span>,<span class="number">112</span>,<span class="number">34</span>,<span class="string">'你好'</span>,<span class="string">'str'</span>,<span class="string">'str1'</span>];</div><div class="line">alert(arr.unique3());</div></pre></td></tr></table></figure>
 <h3 id="你做的页面在哪些流览器测试过？这些浏览器的内核分别是什么"><a href="#你做的页面在哪些流览器测试过？这些浏览器的内核分别是什么" class="headerlink" title="你做的页面在哪些流览器测试过？这些浏览器的内核分别是什么?"></a>你做的页面在哪些流览器测试过？这些浏览器的内核分别是什么?</h3><p>• IE: trident内核 </p>
 </li>
 </ol>
@@ -1189,6 +1211,22 @@ Last-Modified: $now // RFC1123 format
       
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/18/text-md/" rel="prev" title="text.md">
+                text.md <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -1260,7 +1298,7 @@ Last-Modified: $now // RFC1123 format
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1271,7 +1309,7 @@ Last-Modified: $now // RFC1123 format
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1282,7 +1320,7 @@ Last-Modified: $now // RFC1123 format
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1462,6 +1500,21 @@ Last-Modified: $now // RFC1123 format
 
 
 
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cyt7jgd1w';
+      var conf = 'f19f2fb685a201221197181a72cb9250';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
 
 
   
@@ -1471,6 +1524,113 @@ Last-Modified: $now // RFC1123 format
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("dVtrviVW8bU1k9jutdwBNuv5-gzGzoHsz", "1PYxrqPoxJJQilbLfRANIYYx");AV.useAVCloudUS();</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
