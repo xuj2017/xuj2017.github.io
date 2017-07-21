@@ -190,6 +190,7 @@ body {
   line-height: 2;
   color: #555;
   background: #fff;
+  background-image: url("../images/bg.jpg") !important;
 }
 @media (max-width: 767px) {
   body {
@@ -960,6 +961,7 @@ pre .javascript .function {
 }
 .header {
   background: transparent;
+  background-image: url("../images/bg.jpg") !important;
 }
 .header-inner {
   position: relative;
@@ -1677,7 +1679,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff78d1;
+  background: #991d96;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -1791,6 +1793,7 @@ pre .javascript .function {
 .footer {
   font-size: 14px;
   color: #999;
+  background-image: url("../images/bg.jpg") !important;
 }
 .footer img {
   border: none;
