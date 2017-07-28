@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="titleThe input is a string str of digits. Cut the string into chunks (a chunk here is a substring of the initial string) of size sz (ignore the last chunk if its size is less than sz). If a chunk repr">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reverse or rotate">
+<meta property="og:url" content="http://yoursite.com/2017/07/24/Reverse-or-rotate/index.html">
+<meta property="og:site_name" content="Xuj&#39;s Note">
+<meta property="og:description" content="titleThe input is a string str of digits. Cut the string into chunks (a chunk here is a substring of the initial string) of size sz (ignore the last chunk if its size is less than sz). If a chunk repr">
+<meta property="og:updated_time" content="2017-07-24T02:43:07.278Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Reverse or rotate">
+<meta name="twitter:description" content="titleThe input is a string str of digits. Cut the string into chunks (a chunk here is a substring of the initial string) of size sz (ignore the last chunk if its size is less than sz). If a chunk repr">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/24/Reverse-or-rotate/"/>
+
+
+
+
+
+  <title>Reverse or rotate | Xuj's Note</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuj's Note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/24/Reverse-or-rotate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="徐俊">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuj's Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Reverse or rotate</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-24T10:14:16+08:00">
+                2017-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/codewars/" itemprop="url" rel="index">
+                    <span itemprop="name">codewars</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="title"><a href="#title" class="headerlink" title="title"></a>title</h2><p>The input is a string str of digits. Cut the string into chunks (a chunk here is a substring of the initial string) of size sz (ignore the last chunk if its size is less than sz).</p>
+<p>If a chunk represents an integer such as the sum of the cubes of its digits is divisible by 2, reverse that chunk; otherwise rotate it to the left by one position. Put together these modified chunks and return the result as a string.</p>
+<p>If</p>
+<ul>
+<li><code>sz</code> is &lt;= 0 or if <code>str</code> is <code>empty</code> return “”</li>
+<li><code>sz</code> is greater <code>(&gt;)</code> than the length of <code>str</code> it is impossible to take a chunk of size <code>sz</code> hence return “”.</li>
+</ul>
+<p>###example<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">revrot(<span class="string">"123456987654"</span>, <span class="number">6</span>) --&gt; <span class="string">"234561876549"</span></div><div class="line">revrot(<span class="string">"123456987653"</span>, <span class="number">6</span>) --&gt; <span class="string">"234561356789"</span></div><div class="line">revrot(<span class="string">"66443875"</span>, <span class="number">4</span>) --&gt; <span class="string">"44668753"</span></div><div class="line">revrot(<span class="string">"66443875"</span>, <span class="number">8</span>) --&gt; <span class="string">"64438756"</span></div><div class="line">revrot(<span class="string">"664438769"</span>, <span class="number">8</span>) --&gt; <span class="string">"67834466"</span></div><div class="line">revrot(<span class="string">"123456779"</span>, <span class="number">8</span>) --&gt; <span class="string">"23456771"</span></div><div class="line">revrot(<span class="string">""</span>, <span class="number">8</span>) --&gt; <span class="string">""</span></div><div class="line">revrot(<span class="string">"123456779"</span>, <span class="number">0</span>) --&gt; <span class="string">""</span> </div><div class="line">revrot(<span class="string">"563000655734469485"</span>, <span class="number">4</span>) --&gt; <span class="string">"0365065073456944"</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="My-solution"><a href="#My-solution" class="headerlink" title="My solution"></a>My solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">revrot</span>(<span class="params">str, sz</span>) </span>&#123;</div><div class="line">			    <span class="comment">// your code</span></div><div class="line">    <span class="keyword">var</span> result=<span class="string">""</span>;</div><div class="line">    <span class="keyword">if</span>(str.length&lt;sz||str.length == <span class="number">0</span>||sz == <span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> cubeNum = <span class="built_in">Math</span>.floor(str.length/sz);<span class="comment">//判断可以分成几块</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ;i&lt;cubeNum;i++)&#123;</div><div class="line">        <span class="keyword">var</span> cube = str.slice(i*sz,(i+<span class="number">1</span>)*sz);</div><div class="line">        <span class="keyword">var</span> sum = <span class="number">0</span>;<span class="comment">//每块求和</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>;j&lt;cube.length;j++)&#123;</div><div class="line">            sum = <span class="built_in">parseInt</span>(cube.charAt(j)) +<span class="built_in">parseInt</span>(sum);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(sum%<span class="number">2</span>== <span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> j =cube.length;j&gt;=<span class="number">0</span>;j--)&#123;</div><div class="line">            result += cube.charAt(j)+<span class="string">''</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">var</span> firstCode =  cube.split(<span class="string">""</span>).splice(<span class="number">0</span>,<span class="number">1</span>).toString();</div><div class="line">                result += cube.split(<span class="string">""</span>).splice(<span class="number">1</span>,cube.length).join(<span class="string">""</span>) + firstCode;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="good-solution"><a href="#good-solution" class="headerlink" title="good solution"></a>good solution</h2><h3 id="one"><a href="#one" class="headerlink" title="one"></a>one</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">revrot</span>(<span class="params">str, sz</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (sz &lt; <span class="number">1</span> || sz &gt; str.length) </div><div class="line">    <span class="keyword">return</span> <span class="string">''</span>;</div><div class="line"></div><div class="line">  <span class="keyword">let</span> reverse = <span class="function"><span class="params">s</span> =&gt;</span> s.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</div><div class="line">  <span class="keyword">let</span> rotate  = <span class="function"><span class="params">s</span> =&gt;</span> s.slice(<span class="number">1</span>) + s.slice(<span class="number">0</span>, <span class="number">1</span>);</div><div class="line">  <span class="keyword">let</span> sum_cubes = <span class="function"><span class="params">c</span> =&gt;</span> c.split(<span class="string">''</span>).reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + +b ** <span class="number">3</span>, <span class="number">0</span>); </div><div class="line"></div><div class="line">  <span class="keyword">return</span> str</div><div class="line">    .match(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'.&#123;'</span> + sz + <span class="string">'&#125;'</span>, <span class="string">'g'</span>))</div><div class="line">    .map(<span class="function"><span class="params">c</span> =&gt;</span> sum_cubes(c) % <span class="number">2</span> ? rotate(c) : reverse(c))</div><div class="line">    .join(<span class="string">''</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="two"><a href="#two" class="headerlink" title="two"></a>two</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">revrot</span>(<span class="params">str, sz</span>) </span>&#123;</div><div class="line">   <span class="keyword">if</span>(!sz||sz&lt;<span class="number">0</span>||sz&gt;str.length)<span class="keyword">return</span> <span class="string">''</span>;</div><div class="line">   <span class="keyword">var</span> arr=str.match(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'\\d&#123;'</span>+sz+<span class="string">'&#125;'</span>,<span class="string">'g'</span>));</div><div class="line">   <span class="keyword">return</span> arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>)</span>&#123;</div><div class="line">     <span class="keyword">if</span>(v.toString().split(<span class="string">''</span>).reduce(<span class="function">(<span class="params">s,v</span>)=&gt;</span>s+v*<span class="number">1</span>,<span class="number">0</span>)%<span class="number">2</span>===<span class="number">0</span>)&#123;</div><div class="line">       <span class="keyword">return</span> v.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">else</span> <span class="keyword">return</span> v.slice(<span class="number">1</span>)+v[<span class="number">0</span>];</div><div class="line">   &#125;).join(<span class="string">''</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/21/Jaden-Casing-Strings/" rel="next" title="Jaden Casing Strings">
+                <i class="fa fa-chevron-left"></i> Jaden Casing Strings
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/27/angular-study/" rel="prev" title="angular-study">
+                angular-study <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="徐俊" />
+          <p class="site-author-name" itemprop="name">徐俊</p>
+           
+              <p class="site-description motion-element" itemprop="description">如果冬天来了，春天还会远吗</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title"><span class="nav-number">1.</span> <span class="nav-text">title</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#My-solution"><span class="nav-number">2.</span> <span class="nav-text">My solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#good-solution"><span class="nav-number">3.</span> <span class="nav-text">good solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#one"><span class="nav-number">3.1.</span> <span class="nav-text">one</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#two"><span class="nav-number">3.2.</span> <span class="nav-text">two</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">皖ICP备17015096号</span>
+  <span class="with-love">
+    <i class="fa fa-leaf"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐俊</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
