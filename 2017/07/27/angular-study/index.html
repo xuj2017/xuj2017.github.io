@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/27/angular-study/index.html">
 <meta property="og:site_name" content="Xuj&#39;s Note">
 <meta property="og:description" content="1.安装angular-cli123$ npm install -g @angular/cli// ng -v 检测是否装好// ng new auction 初始化angular项目基础架构 12345678910@Component(&amp;#123;//装饰器  selector: &apos;app-root&apos;,//元数据及其指  templateUrl: &apos;./app.component.html&apos;,">
-<meta property="og:updated_time" content="2017-07-27T03:09:36.665Z">
+<meta property="og:updated_time" content="2017-08-01T06:54:40.176Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angular-study">
 <meta name="twitter:description" content="1.安装angular-cli123$ npm install -g @angular/cli// ng -v 检测是否装好// ng new auction 初始化angular项目基础架构 12345678910@Component(&amp;#123;//装饰器  selector: &apos;app-root&apos;,//元数据及其指  templateUrl: &apos;./app.component.html&apos;,">
@@ -342,6 +342,8 @@
       
         <h2 id="1-安装angular-cli"><a href="#1-安装angular-cli" class="headerlink" title="1.安装angular-cli"></a>1.安装<code>angular-cli</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ npm install -g @angular/cli</div><div class="line">// ng -v 检测是否装好</div><div class="line">// ng new auction 初始化angular项目基础架构</div></pre></td></tr></table></figure>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Component</span>(&#123;<span class="comment">//装饰器</span></div><div class="line">  selector: <span class="string">'app-root'</span>,<span class="comment">//元数据及其指</span></div><div class="line">  templateUrl: <span class="string">'./app.component.html'</span>,</div><div class="line">  styleUrls: [<span class="string">'./app.component.css'</span>]</div><div class="line">&#125;)</div><div class="line"><span class="comment">//组件元数据装饰器</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppComponent &#123;</div><div class="line">  title = <span class="string">'app'</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//控制器</span></div></pre></td></tr></table></figure>
+<h2 id="2-安装第三方依赖"><a href="#2-安装第三方依赖" class="headerlink" title="2.安装第三方依赖"></a>2.安装第三方依赖</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install jquery @types/jquery --save-dev  //@types/jquery为了让ts使用jquery</div><div class="line">npm install bootstrap @types/bootstrap --save-dev </div><div class="line"></div><div class="line">//需在`.angular-cli.json`中   jquery  bootstrap添加才能使用</div></pre></td></tr></table></figure>
+<h2 id="3-安装组件"><a href="#3-安装组件" class="headerlink" title="3.安装组件"></a>3.安装组件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ng g component name  //创建新组建</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -523,7 +525,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装angular-cli"><span class="nav-number">1.</span> <span class="nav-text">1.安装angular-cli</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装angular-cli"><span class="nav-number">1.</span> <span class="nav-text">1.安装angular-cli</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装第三方依赖"><span class="nav-number">2.</span> <span class="nav-text">2.安装第三方依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装组件"><span class="nav-number">3.</span> <span class="nav-text">3.安装组件</span></a></li></ol></div>
             
 
           </div>
