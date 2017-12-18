@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="titleIn this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number. Find the smallest integer in the array.Given an array of integers yo">
+<meta name="description" content="This kata is to practice simple string output. Jamie is a programmer, and James’ girlfriend. She likes diamonds, and wants a diamond string from James. Since James doesn’t know how to make this happen">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Find the smallest integer in the array">
-<meta property="og:url" content="http://yoursite.com/2017/07/21/Find-the-smallest-integer-in-the-array/index.html">
+<meta property="og:title" content="Give me a Diamond">
+<meta property="og:url" content="http://yoursite.com/2017/12/18/Give-me-a-Diamond/index.html">
 <meta property="og:site_name" content="Xuj&#39;s Note">
-<meta property="og:description" content="titleIn this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number. Find the smallest integer in the array.Given an array of integers yo">
-<meta property="og:updated_time" content="2017-07-21T05:28:43.410Z">
+<meta property="og:description" content="This kata is to practice simple string output. Jamie is a programmer, and James’ girlfriend. She likes diamonds, and wants a diamond string from James. Since James doesn’t know how to make this happen">
+<meta property="og:updated_time" content="2017-12-18T08:16:05.350Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Find the smallest integer in the array">
-<meta name="twitter:description" content="titleIn this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number. Find the smallest integer in the array.Given an array of integers yo">
+<meta name="twitter:title" content="Give me a Diamond">
+<meta name="twitter:description" content="This kata is to practice simple string output. Jamie is a programmer, and James’ girlfriend. She likes diamonds, and wants a diamond string from James. Since James doesn’t know how to make this happen">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/21/Find-the-smallest-integer-in-the-array/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/18/Give-me-a-Diamond/"/>
 
 
 
 
 
-  <title>Find the smallest integer in the array | Xuj's Note</title>
+  <title>Give me a Diamond | Xuj's Note</title>
   
 
 
@@ -276,7 +276,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/21/Find-the-smallest-integer-in-the-array/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/18/Give-me-a-Diamond/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="徐俊">
@@ -293,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Find the smallest integer in the array</h1>
+          <h1 class="post-title" itemprop="name headline">Give me a Diamond</h1>
         
 
         <div class="post-meta">
@@ -305,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-21T13:27:06+08:00">
-                2017-07-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-18T16:08:06+08:00">
+                2017-12-18
               </time>
             
 
@@ -362,16 +362,14 @@
       
 
       
-        <h2 id="title"><a href="#title" class="headerlink" title="title"></a>title</h2><p>In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.</p>
-<h3 id="Find-the-smallest-integer-in-the-array"><a href="#Find-the-smallest-integer-in-the-array" class="headerlink" title="Find the smallest integer in the array."></a>Find the smallest integer in the array.</h3><pre><code>Given an array of integers your solution should find the smallest integer. For example:
-</code></pre><h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes:"></a>Notes:</h3><ul>
-<li>Given [34, 15, 88, 2] your solution will return 2</li>
-<li>Given [34, -345, -1, 100] your solution will return -345<br>You can assume, for the purpose of this kata, that the supplied array will not be empty.</li>
-</ul>
-<h3 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h3><pre><code>找出最小数
-</code></pre><hr>
-<h2 id="My-solution"><a href="#My-solution" class="headerlink" title="My solution"></a>My solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">function</span>  <span class="title">findSmallestInt</span>(<span class="params">args</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!args)&#123;<span class="keyword">return</span>&#125;</div><div class="line">    <span class="keyword">var</span> minNum = args[<span class="number">0</span>];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> item <span class="keyword">in</span> args)&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">parseInt</span>(minNum)&gt;<span class="built_in">parseInt</span>(args[item]))&#123;</div><div class="line">            minNum = args[item]           </div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> minNum;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="good-solution"><a href="#good-solution" class="headerlink" title="good solution"></a>good solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//...为展开运算符，属于es6语法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">findSmall</span>(<span class="params">args</span>)</span>&#123;</div><div class="line">    <span class="comment">//  return Math.min.apply(Math, args)</span></div><div class="line">    <span class="comment">//  return Math.min(...args)</span></div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.min.apply(<span class="literal">null</span>, args)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>This kata is to practice simple string output. Jamie is a programmer, and James’ girlfriend. She likes diamonds, and wants a diamond string from James. Since James doesn’t know how to make this happen, he needs your help.</p>
+<h2 id="title"><a href="#title" class="headerlink" title="title"></a>title</h2><p>You need to return a string that displays a diamond shape on the screen using asterisk (“*”) characters. Please see provided test cases for exact output format.</p>
+<p>The shape that will be returned from print method resembles a diamond, where the number provided as input represents the number of <em>’s printed on the middle line. The line above and below will be centered and will have 2 less </em>’s than the middle line. This reduction by 2 <em>’s for each line continues until a line with a single </em> is printed at the top and bottom of the figure.</p>
+<p>Return null if input is even number or negative (as it is not possible to print diamond with even number or negative number).</p>
+<h3 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h3><p>输出菱形图案；</p>
+<hr>
+<h2 id="My-solution"><a href="#My-solution" class="headerlink" title="My solution"></a>My solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">diamond</span>(<span class="params">n</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(n &lt; <span class="number">3</span> || n % <span class="number">2</span> == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> middle = <span class="built_in">parseInt</span>((n + <span class="number">1</span>) / <span class="number">2</span>);</div><div class="line">    <span class="keyword">var</span> j, diam = <span class="string">''</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">        j = i &lt;= middle ? i : n - i + <span class="number">1</span>;</div><div class="line">        diam += <span class="string">' '</span>.repeat(middle - j) + <span class="string">'*'</span>.repeat(<span class="number">2</span> * j - <span class="number">1</span>) + <span class="string">'\n'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> diam;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="good-solution"><a href="#good-solution" class="headerlink" title="good solution"></a>good solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">diamond</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span> (n &lt; <span class="number">0</span> || !(n % <span class="number">2</span>)) <span class="keyword">return</span> <span class="literal">null</span>; </div><div class="line">  <span class="keyword">const</span> middleIndex = <span class="built_in">Math</span>.floor(n / <span class="number">2</span>);</div><div class="line">  </div><div class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.apply(<span class="literal">null</span>, &#123;<span class="attr">length</span>: n&#125;)</div><div class="line">      .map(<span class="function">(<span class="params">el, index</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">const</span> indentation = <span class="built_in">Math</span>.abs(index - middleIndex);</div><div class="line">        <span class="keyword">const</span> numberOfAsterisks = n - indentation * <span class="number">2</span>;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">Array</span>(indentation + <span class="number">1</span>).join(<span class="string">' '</span>) + <span class="built_in">Array</span>(numberOfAsterisks + <span class="number">1</span>).join(<span class="string">'*'</span>);</div><div class="line">      &#125;)</div><div class="line">      .join(<span class="string">'\n'</span>) + <span class="string">'\n'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -413,8 +411,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/21/Duplicate-Encoder/" rel="next" title="Duplicate Encoder">
-                <i class="fa fa-chevron-left"></i> Duplicate Encoder
+              <a href="/2017/07/27/angular-study/" rel="next" title="angular-study">
+                <i class="fa fa-chevron-left"></i> angular-study
               </a>
             
           </div>
@@ -423,8 +421,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/21/Highest-and-Lowest/" rel="prev" title="Highest and Lowest">
-                Highest and Lowest <i class="fa fa-chevron-right"></i>
+              <a href="/2017/12/18/Format-a-string-of-names/" rel="prev" title="Format a string of names like 'Bart, Lisa & Maggie'.'">
+                Format a string of names like 'Bart, Lisa & Maggie'.' <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -557,7 +555,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title"><span class="nav-number">1.</span> <span class="nav-text">title</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Find-the-smallest-integer-in-the-array"><span class="nav-number">1.1.</span> <span class="nav-text">Find the smallest integer in the array.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Notes"><span class="nav-number">1.2.</span> <span class="nav-text">Notes:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#翻译"><span class="nav-number">1.3.</span> <span class="nav-text">翻译</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#My-solution"><span class="nav-number">2.</span> <span class="nav-text">My solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#good-solution"><span class="nav-number">3.</span> <span class="nav-text">good solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title"><span class="nav-number">1.</span> <span class="nav-text">title</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#翻译"><span class="nav-number">1.1.</span> <span class="nav-text">翻译</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#My-solution"><span class="nav-number">2.</span> <span class="nav-text">My solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#good-solution"><span class="nav-number">3.</span> <span class="nav-text">good solution</span></a></li></ol></div>
             
 
           </div>
