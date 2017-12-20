@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="titleGiven: an array containing hashes of names Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand. Example12345">
+<meta name="description" content="titleWrite a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS) example12345Test.assertEquals(humanReadable(0), &apos;00:00:00&apos;, &apos;hum">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Format a string of names like &#39;Bart, Lisa &amp; Maggie&#39;.&#39;">
-<meta property="og:url" content="http://yoursite.com/2017/12/18/Format-a-string-of-names/index.html">
+<meta property="og:title" content="humanReadableTime">
+<meta property="og:url" content="http://yoursite.com/2017/12/19/humanReadableTime/index.html">
 <meta property="og:site_name" content="Xuj&#39;s Note">
-<meta property="og:description" content="titleGiven: an array containing hashes of names Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand. Example12345">
-<meta property="og:updated_time" content="2017-12-18T09:11:41.883Z">
+<meta property="og:description" content="titleWrite a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS) example12345Test.assertEquals(humanReadable(0), &apos;00:00:00&apos;, &apos;hum">
+<meta property="og:updated_time" content="2017-12-19T01:24:38.227Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Format a string of names like &#39;Bart, Lisa &amp; Maggie&#39;.&#39;">
-<meta name="twitter:description" content="titleGiven: an array containing hashes of names Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand. Example12345">
+<meta name="twitter:title" content="humanReadableTime">
+<meta name="twitter:description" content="titleWrite a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS) example12345Test.assertEquals(humanReadable(0), &apos;00:00:00&apos;, &apos;hum">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/18/Format-a-string-of-names/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/19/humanReadableTime/"/>
 
 
 
 
 
-  <title>Format a string of names like 'Bart, Lisa & Maggie'.' | Xuj's Note</title>
+  <title>humanReadableTime | Xuj's Note</title>
   
 
 
@@ -276,7 +276,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/18/Format-a-string-of-names/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/19/humanReadableTime/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="徐俊">
@@ -293,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Format a string of names like 'Bart, Lisa & Maggie'.'</h1>
+          <h1 class="post-title" itemprop="name headline">humanReadableTime</h1>
         
 
         <div class="post-meta">
@@ -305,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-18T16:19:57+08:00">
-                2017-12-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-19T09:20:07+08:00">
+                2017-12-19
               </time>
             
 
@@ -362,13 +362,16 @@
       
 
       
-        <h2 id="title"><a href="#title" class="headerlink" title="title"></a>title</h2><p>Given: an array containing hashes of names</p>
-<p>Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand.</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">list([ &#123;<span class="attr">name</span>: <span class="string">'Bart'</span>&#125;, &#123;<span class="attr">name</span>: <span class="string">'Lisa'</span>&#125;, &#123;<span class="attr">name</span>: <span class="string">'Maggie'</span>&#125; ])</div><div class="line"><span class="comment">// returns 'Bart, Lisa &amp; Maggie'</span></div><div class="line"></div><div class="line">list([ &#123;<span class="attr">name</span>: <span class="string">'Bart'</span>&#125;, &#123;<span class="attr">name</span>: <span class="string">'Lisa'</span>&#125; ])</div><div class="line"><span class="comment">// returns 'Bart &amp; Lisa'</span></div><div class="line"></div><div class="line">list([ &#123;<span class="attr">name</span>: <span class="string">'Bart'</span>&#125; ])</div><div class="line"><span class="comment">// returns 'Bart'</span></div><div class="line"></div><div class="line">list([])</div><div class="line"><span class="comment">// returns ''</span></div></pre></td></tr></table></figure>
+        <h2 id="title"><a href="#title" class="headerlink" title="title"></a>title</h2><p>Write a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS)</p>
+<p>example<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Test.assertEquals(humanReadable(<span class="number">0</span>), <span class="string">'00:00:00'</span>, <span class="string">'humanReadable(0)'</span>);</div><div class="line">Test.assertEquals(humanReadable(<span class="number">5</span>), <span class="string">'00:00:05'</span>, <span class="string">'humanReadable(5)'</span>);</div><div class="line">Test.assertEquals(humanReadable(<span class="number">60</span>), <span class="string">'00:01:00'</span>, <span class="string">'humanReadable(60)'</span>);</div><div class="line">Test.assertEquals(humanReadable(<span class="number">86399</span>), <span class="string">'23:59:59'</span>, <span class="string">'humanReadable(86399)'</span>);</div><div class="line">Test.assertEquals(humanReadable(<span class="number">359999</span>), <span class="string">'99:59:59'</span>, <span class="string">'humanReadable(359999)'</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes:"></a>Notes:</h3><ul>
+<li>HH = hours, padded to 2 digits, range: 00 - 99</li>
+<li>MM = minutes, padded to 2 digits, range: 00 - 59</li>
+<li>SS = seconds, padded to 2 digits, range: 00 - 59</li>
+</ul>
 <hr>
-<h2 id="My-solution"><a href="#My-solution" class="headerlink" title="My solution"></a>My solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">list</span>(<span class="params">names</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!<span class="built_in">Object</span>.prototype.toString.call(names) === <span class="string">'[object Array]'</span> || names.length &lt;<span class="number">1</span>)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">''</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(names.length == <span class="number">1</span>)&#123;</div><div class="line">        <span class="keyword">return</span> names[<span class="number">0</span>][<span class="string">'name'</span>];</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">var</span> result = <span class="string">''</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;names.length;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(i == names.length - <span class="number">1</span>)&#123;</div><div class="line">                result += <span class="string">' &amp; '</span>+names[i][<span class="string">'name'</span>];</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i == names.length - <span class="number">2</span>)&#123;</div><div class="line">                result +=names[i][<span class="string">'name'</span>];</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                result +=names[i][<span class="string">'name'</span>]+<span class="string">', '</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span>  result; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="good-solution"><a href="#good-solution" class="headerlink" title="good solution"></a>good solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//one</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">list</span>(<span class="params">names</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> names.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">prev, current, index, array</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (index === <span class="number">0</span>)&#123;</div><div class="line">      <span class="keyword">return</span> current.name;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (index === array.length - <span class="number">1</span>)&#123;</div><div class="line">      <span class="keyword">return</span> prev + <span class="string">' &amp; '</span> + current.name;</div><div class="line">    &#125; </div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> prev + <span class="string">', '</span> + current.name;</div><div class="line">    &#125;</div><div class="line">  &#125;, <span class="string">''</span>);</div><div class="line"> &#125;</div><div class="line"> <span class="comment">//two</span></div><div class="line"> <span class="comment">//map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。</span></div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">list</span>(<span class="params">names</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> xs = names.map(<span class="function"><span class="params">p</span> =&gt;</span> p.name)</div><div class="line">  <span class="keyword">var</span> x = xs.pop()<span class="comment">//删除并返回数组的最后一个元素</span></div><div class="line">  <span class="keyword">return</span> xs.length ? xs.join(<span class="string">", "</span>) + <span class="string">" &amp; "</span> + x : x || <span class="string">""</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+<h2 id="My-solution"><a href="#My-solution" class="headerlink" title="My solution"></a>My solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">humanReadable</span>(<span class="params">seconds</span>) </span>&#123;</div><div class="line">  <span class="comment">// TODO</span></div><div class="line">  <span class="keyword">if</span>(seconds &lt; <span class="number">0</span> || seconds &gt; <span class="number">359999</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  </div><div class="line">  <span class="keyword">var</span> h = <span class="number">0</span>,m = <span class="number">0</span>,s = <span class="number">0</span>;</div><div class="line">  <span class="keyword">if</span>(seconds &gt;= <span class="number">3600</span>)&#123;</div><div class="line">    h = <span class="built_in">parseInt</span>(seconds/<span class="number">3600</span>);</div><div class="line">    m = <span class="built_in">parseInt</span>((seconds - h*<span class="number">3600</span>)/<span class="number">60</span>);</div><div class="line">    s = seconds - h*<span class="number">3600</span> - m*<span class="number">60</span>;</div><div class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(seconds&gt;=<span class="number">60</span>) &#123;</div><div class="line">     m = <span class="built_in">parseInt</span>(seconds/<span class="number">60</span>);</div><div class="line">     s = seconds - m*<span class="number">60</span>;</div><div class="line">  &#125;<span class="keyword">else</span> &#123;</div><div class="line">     s = seconds;</div><div class="line">  &#125;</div><div class="line">    h = h.toString().length == <span class="number">2</span> ? h : <span class="string">'0'</span>+ h;</div><div class="line">    m = m.toString().length == <span class="number">2</span> ? m : <span class="string">'0'</span>+ m;</div><div class="line">    s = s.toString().length == <span class="number">2</span> ? s : <span class="string">'0'</span>+ s;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> h + <span class="string">':'</span> + m + <span class="string">':'</span> + s;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="good-solution"><a href="#good-solution" class="headerlink" title="good solution"></a>good solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//one</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">humanReadable</span>(<span class="params">seconds</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> pad = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> (x &lt; <span class="number">10</span>) ? <span class="string">"0"</span>+x : x; &#125;</div><div class="line">  <span class="keyword">return</span> pad(<span class="built_in">parseInt</span>(seconds / (<span class="number">60</span>*<span class="number">60</span>))) + <span class="string">":"</span> +</div><div class="line">         pad(<span class="built_in">parseInt</span>(seconds / <span class="number">60</span> % <span class="number">60</span>)) + <span class="string">":"</span> +</div><div class="line">         pad(seconds % <span class="number">60</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//two</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">humanReadable</span>(<span class="params">seconds</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [seconds / <span class="number">3600</span>, seconds % <span class="number">3600</span> / <span class="number">60</span>, seconds % <span class="number">60</span>].map(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</div><div class="line">    v = <span class="built_in">Math</span>.floor(v).toString();</div><div class="line">    <span class="keyword">return</span> v.length == <span class="number">1</span> ? <span class="string">'0'</span> + v : v;</div><div class="line">  &#125;).join(<span class="string">':'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -410,8 +413,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/18/Give-me-a-Diamond/" rel="next" title="Give me a Diamond">
-                <i class="fa fa-chevron-left"></i> Give me a Diamond
+              <a href="/2017/12/18/Format-a-string-of-names/" rel="next" title="Format a string of names like 'Bart, Lisa & Maggie'.'">
+                <i class="fa fa-chevron-left"></i> Format a string of names like 'Bart, Lisa & Maggie'.'
               </a>
             
           </div>
@@ -420,8 +423,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/19/humanReadableTime/" rel="prev" title="humanReadableTime">
-                humanReadableTime <i class="fa fa-chevron-right"></i>
+              <a href="/2017/12/20/whereMyAnagramsAt/" rel="prev" title="whereMyAnagramsAt">
+                whereMyAnagramsAt <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -554,7 +557,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title"><span class="nav-number">1.</span> <span class="nav-text">title</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">1.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#My-solution"><span class="nav-number">2.</span> <span class="nav-text">My solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#good-solution"><span class="nav-number">3.</span> <span class="nav-text">good solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title"><span class="nav-number">1.</span> <span class="nav-text">title</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Notes"><span class="nav-number">1.1.</span> <span class="nav-text">Notes:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#My-solution"><span class="nav-number">2.</span> <span class="nav-text">My solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#good-solution"><span class="nav-number">3.</span> <span class="nav-text">good solution</span></a></li></ol></div>
             
 
           </div>
