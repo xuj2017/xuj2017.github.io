@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="titleThe goal of this exercise is to convert a string to a new string where each character in the new string is ‘(‘ if that character appears only once in the original string, or ‘)’ if that character">
+<meta name="description" content="titleYou need to create a function that will validate if given parameters are valid geographical coordinates. Valid coordinates look like the following: “23.32353342, -32.543534534”. The return value">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Duplicate Encoder">
-<meta property="og:url" content="http://yoursite.com/2017/07/21/Duplicate-Encoder/index.html">
+<meta property="og:title" content="coordinates-validator">
+<meta property="og:url" content="http://yoursite.com/2017/12/27/coordinates-validator/index.html">
 <meta property="og:site_name" content="Xuj&#39;s Note">
-<meta property="og:description" content="titleThe goal of this exercise is to convert a string to a new string where each character in the new string is ‘(‘ if that character appears only once in the original string, or ‘)’ if that character">
-<meta property="og:updated_time" content="2017-07-21T05:26:41.780Z">
+<meta property="og:description" content="titleYou need to create a function that will validate if given parameters are valid geographical coordinates. Valid coordinates look like the following: “23.32353342, -32.543534534”. The return value">
+<meta property="og:updated_time" content="2017-12-27T06:25:41.402Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Duplicate Encoder">
-<meta name="twitter:description" content="titleThe goal of this exercise is to convert a string to a new string where each character in the new string is ‘(‘ if that character appears only once in the original string, or ‘)’ if that character">
+<meta name="twitter:title" content="coordinates-validator">
+<meta name="twitter:description" content="titleYou need to create a function that will validate if given parameters are valid geographical coordinates. Valid coordinates look like the following: “23.32353342, -32.543534534”. The return value">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/21/Duplicate-Encoder/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/27/coordinates-validator/"/>
 
 
 
 
 
-  <title>Duplicate Encoder | Xuj's Note</title>
+  <title>coordinates-validator | Xuj's Note</title>
   
 
 
@@ -276,7 +276,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/21/Duplicate-Encoder/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/27/coordinates-validator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="徐俊">
@@ -293,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Duplicate Encoder</h1>
+          <h1 class="post-title" itemprop="name headline">coordinates-validator</h1>
         
 
         <div class="post-meta">
@@ -305,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-21T13:24:49+08:00">
-                2017-07-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-27T14:19:01+08:00">
+                2017-12-27
               </time>
             
 
@@ -362,13 +362,32 @@
       
 
       
-        <h2 id="title"><a href="#title" class="headerlink" title="title"></a>title</h2><p>The goal of this exercise is to convert a string to a new string where each character in the new string is ‘(‘ if that character appears only once in the original string, or ‘)’ if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.</p>
-<p>example<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="string">"din"</span> =&gt; <span class="string">"((("</span></div><div class="line"></div><div class="line"><span class="string">"recede"</span> =&gt; <span class="string">"()()()"</span></div><div class="line"></div><div class="line"><span class="string">"Success"</span> =&gt; <span class="string">")())())"</span></div><div class="line"></div><div class="line"><span class="string">"(( @"</span> =&gt; <span class="string">"))(("</span></div></pre></td></tr></table></figure></p>
-<!--### Notes:
-Note that the Java version expects a return value of null for an empty string or null.-->
+        <h2 id="title"><a href="#title" class="headerlink" title="title"></a>title</h2><p>You need to create a function that will validate if given parameters are valid geographical coordinates.</p>
+<p>Valid coordinates look like the following: “23.32353342, -32.543534534”. The return value should be either true or false.</p>
+<p>Latitude (which is first float) can be between 0 and 90, positive or negative. Longitude (which is second float) can be between 0 and 180, positive or negative.</p>
+<p>Coordinates can only contain digits, or one of the following symbols (including space after comma) -, .</p>
+<p>There should be no space between the minus “-“ sign and the digit after it.</p>
+<h3 id="example"><a href="#example" class="headerlink" title="example"></a>example</h3><p> Here are some valid coordinates:</p>
+<ul>
+<li>-23, 25</li>
+<li>24.53525235, 23.45235</li>
+<li>04, -23.234235</li>
+<li>43.91343345, 143</li>
+<li>4, -3</li>
+</ul>
+<p>And some invalid ones:</p>
+<ul>
+<li>23.234, - 23.4234</li>
+<li>2342.43536, 34.324236</li>
+<li>N23.43345, E32.6457</li>
+<li>99.234, 12.324</li>
+<li>6.325624, 43.34345.345</li>
+<li>0, 1,2</li>
+<li>0.342q0832, 1.2324</li>
+</ul>
 <hr>
-<h2 id="My-solution"><a href="#My-solution" class="headerlink" title="My solution"></a>My solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">duplicateEncode</span>(<span class="params">word</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!word)&#123;<span class="keyword">return</span>&#125;</div><div class="line">    <span class="keyword">var</span> str = word.toLowerCase();</div><div class="line">    <span class="keyword">var</span> newStr = <span class="string">''</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;str.length;i++)&#123;</div><div class="line">        <span class="keyword">var</span> _char = str.charAt(i);</div><div class="line">        <span class="keyword">if</span>(str.indexOf(_char) == str.lastIndexOf(_char) )&#123;</div><div class="line">        newStr +=<span class="string">'\('</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">        newStr +=<span class="string">'\)'</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> newStr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="good-solution"><a href="#good-solution" class="headerlink" title="good solution"></a>good solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">duplicateEncodes</span>(<span class="params">word</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> word</div><div class="line">        .toLowerCase()</div><div class="line">        .split(<span class="string">''</span>)</div><div class="line">        .map( <span class="function"><span class="keyword">function</span> (<span class="params">a, i, w</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> w.indexOf(a) == w.lastIndexOf(a) ? <span class="string">'('</span> : <span class="string">')'</span></div><div class="line">        &#125;)</div><div class="line">        .join(<span class="string">''</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">duplicateEncodess</span>(<span class="params">word</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> letters = word.toLowerCase().split(<span class="string">''</span>)</div><div class="line">    <span class="keyword">return</span> letters.map(<span class="function"><span class="keyword">function</span>(<span class="params">c, i</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> letters.some(<span class="function"><span class="keyword">function</span>(<span class="params">x, j</span>) </span>&#123; <span class="keyword">return</span> x === c &amp;&amp; i !== j &#125;) ? <span class="string">')'</span> : <span class="string">'('</span></div><div class="line">    &#125;).join(<span class="string">''</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="My-solution"><a href="#My-solution" class="headerlink" title="My solution"></a>My solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//去除首位空格</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params">str</span>)</span>&#123;   </div><div class="line">    <span class="keyword">return</span> str.replace(<span class="regexp">/^(\s|\u00A0)+/</span>,<span class="string">''</span>).replace(<span class="regexp">/(\s|\u00A0)+$/</span>,<span class="string">''</span>);   </div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isValidCoordinates</span>(<span class="params">coordinates</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> valiArr = coordinates.split(<span class="string">','</span>);</div><div class="line">  <span class="keyword">if</span>(valiArr.length != <span class="number">2</span>)&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> Latitude =trim(valiArr[<span class="number">0</span>]);</div><div class="line">  <span class="keyword">var</span> Longitude = trim(valiArr[<span class="number">1</span>]);</div><div class="line">  </div><div class="line">  <span class="keyword">var</span> regu = <span class="regexp">/^(\-|\+)?\d+(\.\d+)?$/</span>;</div><div class="line">  <span class="keyword">if</span>(!regu.test(Latitude)||!regu.test(Longitude) )&#123;</div><div class="line">     <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(<span class="built_in">Math</span>.abs(Latitude)&gt;<span class="number">90</span>||<span class="built_in">Math</span>.abs(Longitude)&gt;<span class="number">180</span>)&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// do your thing!</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="good-solution"><a href="#good-solution" class="headerlink" title="good solution"></a>good solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isValidCoordinates</span>(<span class="params">coordinates</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> match = coordinates.match(<span class="regexp">/^[-]?(\d+(?:\.\d+)?), [-]?(\d+(?:\.\d+)?)$/</span>);</div><div class="line">  <span class="keyword">if</span> (!match) &#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;</div><div class="line">  <span class="keyword">var</span> lat = <span class="built_in">Math</span>.abs(<span class="built_in">parseFloat</span>(match[<span class="number">1</span>]));</div><div class="line">  <span class="keyword">var</span> lng = <span class="built_in">Math</span>.abs(<span class="built_in">parseFloat</span>(match[<span class="number">2</span>]));</div><div class="line">  <span class="keyword">return</span> lat &gt;= <span class="number">0</span> &amp;&amp; lat &lt;= <span class="number">90</span> &amp;&amp; lng &gt;= <span class="number">0</span> &amp;&amp; lng &lt;= <span class="number">180</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isValidCoordinates</span>(<span class="params">coordinates</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="regexp">/^-?((\d)|([0-8]\d)|(90))(\.\d+)?, ?-?((\d\d?)|(1[0-7]\d)|(180))(\.\d+)?$/</span>.test(coordinates)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isValidCoordinates</span>(<span class="params">coordinates</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="regexp">/^(-?((\d|[0-8]\d)(\.\d+)?)|90),\s?(-?((\d\d?|[01][0-7]\d)(\.\d+)?)|180)$/</span>.test(coordinates);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -410,8 +429,8 @@ Note that the Java version expects a return value of null for an empty string or
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/21/Find-the-missing-letter/" rel="next" title="Find the missing letter">
-                <i class="fa fa-chevron-left"></i> Find the missing letter
+              <a href="/2017/12/26/Pascal-s-Triangle/" rel="next" title="Pascal's-Triangle">
+                <i class="fa fa-chevron-left"></i> Pascal's-Triangle
               </a>
             
           </div>
@@ -419,10 +438,6 @@ Note that the Java version expects a return value of null for an empty string or
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/21/Find-the-smallest-integer-in-the-array/" rel="prev" title="Find the smallest integer in the array">
-                Find the smallest integer in the array <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -554,7 +569,7 @@ Note that the Java version expects a return value of null for an empty string or
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title"><span class="nav-number">1.</span> <span class="nav-text">title</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#My-solution"><span class="nav-number">2.</span> <span class="nav-text">My solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#good-solution"><span class="nav-number">3.</span> <span class="nav-text">good solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title"><span class="nav-number">1.</span> <span class="nav-text">title</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#example"><span class="nav-number">1.1.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#My-solution"><span class="nav-number">2.</span> <span class="nav-text">My solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#good-solution"><span class="nav-number">3.</span> <span class="nav-text">good solution</span></a></li></ol></div>
             
 
           </div>
