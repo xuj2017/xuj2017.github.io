@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="titleYou need to create a function that will validate if given parameters are valid geographical coordinates. Valid coordinates look like the following: “23.32353342, -32.543534534”. The return value">
+<meta name="description" content="titleCreate a function that takes a Roman numeral as its argument and returns its value as a numeric decimal integer. You don’t need to validate the form of the Roman numeral. Modern Roman numerals ar">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="coordinates-validator">
-<meta property="og:url" content="http://yoursite.com/2017/12/27/coordinates-validator/index.html">
+<meta property="og:title" content="Roman Numerals Decoder">
+<meta property="og:url" content="http://yoursite.com/2017/12/28/roman-bunerals-decoder/index.html">
 <meta property="og:site_name" content="Xuj&#39;s Note">
-<meta property="og:description" content="titleYou need to create a function that will validate if given parameters are valid geographical coordinates. Valid coordinates look like the following: “23.32353342, -32.543534534”. The return value">
-<meta property="og:updated_time" content="2017-12-27T06:25:41.402Z">
+<meta property="og:description" content="titleCreate a function that takes a Roman numeral as its argument and returns its value as a numeric decimal integer. You don’t need to validate the form of the Roman numeral. Modern Roman numerals ar">
+<meta property="og:updated_time" content="2017-12-29T09:40:39.729Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="coordinates-validator">
-<meta name="twitter:description" content="titleYou need to create a function that will validate if given parameters are valid geographical coordinates. Valid coordinates look like the following: “23.32353342, -32.543534534”. The return value">
+<meta name="twitter:title" content="Roman Numerals Decoder">
+<meta name="twitter:description" content="titleCreate a function that takes a Roman numeral as its argument and returns its value as a numeric decimal integer. You don’t need to validate the form of the Roman numeral. Modern Roman numerals ar">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/27/coordinates-validator/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/28/roman-bunerals-decoder/"/>
 
 
 
 
 
-  <title>coordinates-validator | Xuj's Note</title>
+  <title>Roman Numerals Decoder | Xuj's Note</title>
   
 
 
@@ -276,7 +276,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/27/coordinates-validator/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/28/roman-bunerals-decoder/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="徐俊">
@@ -293,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">coordinates-validator</h1>
+          <h1 class="post-title" itemprop="name headline">Roman Numerals Decoder</h1>
         
 
         <div class="post-meta">
@@ -305,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-27T14:19:01+08:00">
-                2017-12-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T14:28:53+08:00">
+                2017-12-28
               </time>
             
 
@@ -362,32 +362,13 @@
       
 
       
-        <h2 id="title"><a href="#title" class="headerlink" title="title"></a>title</h2><p>You need to create a function that will validate if given parameters are valid geographical coordinates.</p>
-<p>Valid coordinates look like the following: “23.32353342, -32.543534534”. The return value should be either true or false.</p>
-<p>Latitude (which is first float) can be between 0 and 90, positive or negative. Longitude (which is second float) can be between 0 and 180, positive or negative.</p>
-<p>Coordinates can only contain digits, or one of the following symbols (including space after comma) -, .</p>
-<p>There should be no space between the minus “-“ sign and the digit after it.</p>
-<h3 id="example"><a href="#example" class="headerlink" title="example"></a>example</h3><p> Here are some valid coordinates:</p>
-<ul>
-<li>-23, 25</li>
-<li>24.53525235, 23.45235</li>
-<li>04, -23.234235</li>
-<li>43.91343345, 143</li>
-<li>4, -3</li>
-</ul>
-<p>And some invalid ones:</p>
-<ul>
-<li>23.234, - 23.4234</li>
-<li>2342.43536, 34.324236</li>
-<li>N23.43345, E32.6457</li>
-<li>99.234, 12.324</li>
-<li>6.325624, 43.34345.345</li>
-<li>0, 1,2</li>
-<li>0.342q0832, 1.2324</li>
-</ul>
+        <h2 id="title"><a href="#title" class="headerlink" title="title"></a>title</h2><p>Create a function that takes a Roman numeral as its argument and returns its value as a numeric decimal integer. You don’t need to validate the form of the Roman numeral.</p>
+<p>Modern Roman numerals are written by expressing each decimal digit of the number to be encoded separately, starting with the leftmost digit and skipping any 0s. So 1990 is rendered “MCMXC” (1000 = M, 900 = CM, 90 = XC) and 2008 is rendered “MMVIII” (2000 = MM, 8 = VIII). The Roman numeral for 1666, “MDCLXVI”, uses each letter in descending order.</p>
+<h3 id="example"><a href="#example" class="headerlink" title="example"></a>example</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">solution(<span class="string">'XXI'</span>); <span class="comment">// should return 21</span></div></pre></td></tr></table></figure>
 <hr>
-<h2 id="My-solution"><a href="#My-solution" class="headerlink" title="My solution"></a>My solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//去除首位空格</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params">str</span>)</span>&#123;   </div><div class="line">    <span class="keyword">return</span> str.replace(<span class="regexp">/^(\s|\u00A0)+/</span>,<span class="string">''</span>).replace(<span class="regexp">/(\s|\u00A0)+$/</span>,<span class="string">''</span>);   </div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isValidCoordinates</span>(<span class="params">coordinates</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> valiArr = coordinates.split(<span class="string">','</span>);</div><div class="line">  <span class="keyword">if</span>(valiArr.length != <span class="number">2</span>)&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> Latitude =trim(valiArr[<span class="number">0</span>]);</div><div class="line">  <span class="keyword">var</span> Longitude = trim(valiArr[<span class="number">1</span>]);</div><div class="line">  </div><div class="line">  <span class="keyword">var</span> regu = <span class="regexp">/^(\-|\+)?\d+(\.\d+)?$/</span>;</div><div class="line">  <span class="keyword">if</span>(!regu.test(Latitude)||!regu.test(Longitude) )&#123;</div><div class="line">     <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(<span class="built_in">Math</span>.abs(Latitude)&gt;<span class="number">90</span>||<span class="built_in">Math</span>.abs(Longitude)&gt;<span class="number">180</span>)&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// do your thing!</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="good-solution"><a href="#good-solution" class="headerlink" title="good solution"></a>good solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isValidCoordinates</span>(<span class="params">coordinates</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> match = coordinates.match(<span class="regexp">/^[-]?(\d+(?:\.\d+)?), [-]?(\d+(?:\.\d+)?)$/</span>);</div><div class="line">  <span class="keyword">if</span> (!match) &#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;</div><div class="line">  <span class="keyword">var</span> lat = <span class="built_in">Math</span>.abs(<span class="built_in">parseFloat</span>(match[<span class="number">1</span>]));</div><div class="line">  <span class="keyword">var</span> lng = <span class="built_in">Math</span>.abs(<span class="built_in">parseFloat</span>(match[<span class="number">2</span>]));</div><div class="line">  <span class="keyword">return</span> lat &gt;= <span class="number">0</span> &amp;&amp; lat &lt;= <span class="number">90</span> &amp;&amp; lng &gt;= <span class="number">0</span> &amp;&amp; lng &lt;= <span class="number">180</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isValidCoordinates</span>(<span class="params">coordinates</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="regexp">/^-?((\d)|([0-8]\d)|(90))(\.\d+)?, ?-?((\d\d?)|(1[0-7]\d)|(180))(\.\d+)?$/</span>.test(coordinates)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isValidCoordinates</span>(<span class="params">coordinates</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="regexp">/^(-?((\d|[0-8]\d)(\.\d+)?)|90),\s?(-?((\d\d?|[01][0-7]\d)(\.\d+)?)|180)$/</span>.test(coordinates);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="other-solution"><a href="#other-solution" class="headerlink" title="other solution"></a>other solution</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">solution</span>(<span class="params">roman</span>)</span>&#123;</div><div class="line">      <span class="keyword">var</span> romanNumerals = &#123;</div><div class="line">          <span class="string">'M'</span>: <span class="number">1000</span>,</div><div class="line">          <span class="string">'D'</span>: <span class="number">500</span>,</div><div class="line">          <span class="string">'C'</span>: <span class="number">100</span>,</div><div class="line">          <span class="string">'L'</span>: <span class="number">50</span>,</div><div class="line">          <span class="string">'X'</span>: <span class="number">10</span>,</div><div class="line">          <span class="string">'V'</span>: <span class="number">5</span>,</div><div class="line">          <span class="string">'I'</span>: <span class="number">1</span></div><div class="line">        &#125;;</div><div class="line">      roman=roman.split(<span class="string">""</span>);</div><div class="line">      <span class="keyword">var</span> m=<span class="number">0</span>;</div><div class="line">      n=roman[<span class="number">0</span>];</div><div class="line">      roman.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">pre,item,index</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> j=romanNumerals[n]||<span class="number">0</span>;</div><div class="line">        <span class="keyword">var</span> k=romanNumerals[item]||<span class="number">0</span>;</div><div class="line">        m+=j&lt;k?-j:j;</div><div class="line">        n=item</div><div class="line">      &#125;);</div><div class="line">      <span class="keyword">return</span> m+romanNumerals[roman[roman.length<span class="number">-1</span>]]</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h2 id="good-solution"><a href="#good-solution" class="headerlink" title="good solution"></a>good solution</h2><h3 id="one"><a href="#one" class="headerlink" title="one"></a>one</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">solution</span>(<span class="params">roman</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> rom =&#123; <span class="string">"I"</span>:<span class="number">1</span>,<span class="string">"V"</span>:<span class="number">5</span>,<span class="string">"X"</span>:<span class="number">10</span>,<span class="string">"L"</span>:<span class="number">50</span>,<span class="string">"C"</span>:<span class="number">100</span>,<span class="string">"D"</span>:<span class="number">500</span>,<span class="string">"M"</span>:<span class="number">1000</span>&#125;;</div><div class="line">    <span class="keyword">return</span> roman.split(<span class="string">''</span>).reverse().reduce(</div><div class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">dec,c,i,rr</span>)</span>&#123; </div><div class="line">            c=rom[c];</div><div class="line">            i=rom[rr[i<span class="number">-1</span>]]||<span class="number">0</span>; </div><div class="line">            <span class="keyword">return</span> dec + (i&lt;=c? c: -c) &#125;</div><div class="line">        ,<span class="number">0</span></div><div class="line">    )</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="two"><a href="#two" class="headerlink" title="two"></a>two</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">solution</span>(<span class="params">roman</span>)</span>&#123;</div><div class="line">   <span class="keyword">var</span> conversion = &#123;<span class="attr">M</span>: <span class="number">1000</span>, <span class="attr">CM</span>: <span class="number">900</span>, <span class="attr">D</span>: <span class="number">500</span>, <span class="attr">CD</span>: <span class="number">400</span>, <span class="attr">C</span>: <span class="number">100</span>, <span class="attr">XC</span>: <span class="number">90</span>, <span class="attr">L</span>: <span class="number">50</span>, <span class="attr">XL</span>: <span class="number">40</span>, <span class="attr">X</span>: <span class="number">10</span>, <span class="attr">IX</span>: <span class="number">9</span>, <span class="attr">V</span>: <span class="number">5</span>, <span class="attr">IV</span>: <span class="number">4</span>, <span class="attr">I</span>: <span class="number">1</span>&#125;;</div><div class="line">   </div><div class="line">   <span class="keyword">return</span> roman.match(<span class="regexp">/CM|CD|XC|XL|IX|IV|\w/g</span>).reduce(<span class="function">(<span class="params">accum, roman</span>) =&gt;</span> accum + conversion[roman], <span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -429,8 +410,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/26/Pascal-s-Triangle/" rel="next" title="Pascal's-Triangle">
-                <i class="fa fa-chevron-left"></i> Pascal's-Triangle
+              <a href="/2017/12/27/coordinates-validator/" rel="next" title="coordinates-validator">
+                <i class="fa fa-chevron-left"></i> coordinates-validator
               </a>
             
           </div>
@@ -439,8 +420,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/28/roman-bunerals-decoder/" rel="prev" title="Roman Numerals Decoder">
-                Roman Numerals Decoder <i class="fa fa-chevron-right"></i>
+              <a href="/2017/12/29/nextSmallerNumber/" rel="prev" title="nextSmallerNumber">
+                nextSmallerNumber <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -573,7 +554,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title"><span class="nav-number">1.</span> <span class="nav-text">title</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#example"><span class="nav-number">1.1.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#My-solution"><span class="nav-number">2.</span> <span class="nav-text">My solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#good-solution"><span class="nav-number">3.</span> <span class="nav-text">good solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title"><span class="nav-number">1.</span> <span class="nav-text">title</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#example"><span class="nav-number">1.1.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#other-solution"><span class="nav-number">2.</span> <span class="nav-text">other solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#good-solution"><span class="nav-number">3.</span> <span class="nav-text">good solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#one"><span class="nav-number">3.1.</span> <span class="nav-text">one</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#two"><span class="nav-number">3.2.</span> <span class="nav-text">two</span></a></li></ol></li></ol></div>
             
 
           </div>
