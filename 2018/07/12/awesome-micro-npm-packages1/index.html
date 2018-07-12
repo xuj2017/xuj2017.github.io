@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="xuj" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="记录阅读的node模块  1. is-sorted 一个用于检查数组是否排序的库 github  123456789101112131415161718//默认排序函数 正序function defaultComparator (a, b) &amp;#123;  return a - b&amp;#125;module.exports = function checksort (array, comparat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node 小型库阅读(1)">
+<meta property="og:url" content="http://yoursite.com/2018/07/12/awesome-micro-npm-packages1/index.html">
+<meta property="og:site_name" content="Xuj&#39;s Note">
+<meta property="og:description" content="记录阅读的node模块  1. is-sorted 一个用于检查数组是否排序的库 github  123456789101112131415161718//默认排序函数 正序function defaultComparator (a, b) &amp;#123;  return a - b&amp;#125;module.exports = function checksort (array, comparat">
+<meta property="og:updated_time" content="2018-07-12T05:47:30.504Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node 小型库阅读(1)">
+<meta name="twitter:description" content="记录阅读的node模块  1. is-sorted 一个用于检查数组是否排序的库 github  123456789101112131415161718//默认排序函数 正序function defaultComparator (a, b) &amp;#123;  return a - b&amp;#125;module.exports = function checksort (array, comparat">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/12/awesome-micro-npm-packages1/"/>
+
+
+
+
+
+  <title>node 小型库阅读(1) | Xuj's Note</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuj's Note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/12/awesome-micro-npm-packages1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="徐俊">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuj's Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">node 小型库阅读(1)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-12T10:08:17+08:00">
+                2018-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>记录阅读的<a href="https://github.com/parro-it/awesome-micro-npm-packages" target="_blank" rel="external">node模块</a></p>
+</blockquote>
+<h2 id="1-is-sorted"><a href="#1-is-sorted" class="headerlink" title="1. is-sorted"></a>1. is-sorted</h2><blockquote>
+<p>一个用于检查数组是否排序的库 <a href="https://github.com/dcousens/is-sorted" target="_blank" rel="external">github</a></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//默认排序函数 正序</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">defaultComparator</span> (<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a - b</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">checksort</span> (<span class="params">array, comparator</span>) </span>&#123;</div><div class="line">  <span class="comment">//用于检查array是否为数组</span></div><div class="line">  <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(array)) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Expected Array, got '</span> + (<span class="keyword">typeof</span> array))</div><div class="line">  <span class="comment">//设置comparator的默认值为defaultComparator即为正序</span></div><div class="line">  comparator = comparator || defaultComparator</div><div class="line"></div><div class="line">  <span class="comment">//循环数组，判断相邻两数之差是否大于0，不是的话返回false</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>, length = array.length; i &lt; length; ++i) &#123;</div><div class="line">    <span class="keyword">if</span> (comparator(array[i - <span class="number">1</span>], array[i]) &gt; <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>Example</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sorted <span class="keyword">from</span> <span class="string">'is-sorted'</span></div><div class="line"></div><div class="line">sorted([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])<span class="comment">//=&gt; true</span></div><div class="line"></div><div class="line">sorted([<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>])<span class="comment">//=&gt; false</span></div><div class="line"></div><div class="line">sorted([<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>],(a,b)=&gt;b-a)<span class="comment">//=&gt; true</span></div></pre></td></tr></table></figure>
+<h2 id="2-is-number"><a href="#2-is-number" class="headerlink" title="2.is-number"></a>2.is-number</h2><blockquote>
+<p>判断是否为数字</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">  <span class="comment">//判断num 类型是否为number =&gt;eg:10,5e3,0xff,+[]</span></div><div class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> num === <span class="string">'number'</span>) &#123;</div><div class="line">   </div><div class="line">    <span class="comment">//去除NaN，typeof NaN === 'number'</span></div><div class="line">    <span class="comment">//NaN-NaN === NaN</span></div><div class="line">    </div><div class="line">    <span class="keyword">return</span> num - num === <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="comment">// 判断num是否为不为空的字符串</span></div><div class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> num === <span class="string">'string'</span> &amp;&amp; num.trim() !== <span class="string">''</span>) &#123;</div><div class="line">    <span class="comment">//isFinite 用于判断数字是否为有穷数</span></div><div class="line">    <span class="comment">//+num 转化为数值类型</span></div><div class="line">    <span class="comment">// Number.isFinite和isFinite区别在于：isFinite会将参数转化为数值，且兼容性高</span></div><div class="line">    <span class="keyword">return</span> <span class="built_in">Number</span>.isFinite ? <span class="built_in">Number</span>.isFinite(+num) : <span class="built_in">isFinite</span>(+num);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><code>Example</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> isNumber <span class="keyword">from</span> <span class="string">'is-number'</span></div><div class="line">isNumber(<span class="number">5e3</span>);               <span class="comment">// true</span></div><div class="line">isNumber(<span class="number">0xff</span>);              <span class="comment">// true</span></div><div class="line">isNumber(<span class="number">-1.1</span>);              <span class="comment">// true</span></div><div class="line">isNumber(<span class="number">0</span>);                 <span class="comment">// true</span></div><div class="line">isNumber(<span class="number">1</span>);                 <span class="comment">// true</span></div><div class="line">isNumber(<span class="number">1.1</span>);               <span class="comment">// true</span></div><div class="line">isNumber(<span class="number">10</span>);                <span class="comment">// true</span></div><div class="line">isNumber(<span class="number">10.10</span>);             <span class="comment">// true</span></div><div class="line">isNumber(<span class="number">100</span>);               <span class="comment">// true</span></div><div class="line">isNumber(<span class="string">'-1.1'</span>);            <span class="comment">// true</span></div><div class="line">isNumber(<span class="string">'0'</span>);               <span class="comment">// true</span></div><div class="line">isNumber(<span class="string">'012'</span>);             <span class="comment">// true</span></div><div class="line">isNumber(<span class="string">'0xff'</span>);            <span class="comment">// true</span></div><div class="line">isNumber(<span class="string">'1'</span>);               <span class="comment">// true</span></div><div class="line">isNumber(<span class="string">'1.1'</span>);             <span class="comment">// true</span></div><div class="line">isNumber(<span class="string">'10'</span>);              <span class="comment">// true</span></div><div class="line">isNumber(<span class="string">'10.10'</span>);           <span class="comment">// true</span></div><div class="line">isNumber(<span class="string">'100'</span>);             <span class="comment">// true</span></div><div class="line">isNumber(<span class="string">'5e3'</span>);             <span class="comment">// true</span></div><div class="line">isNumber(<span class="built_in">parseInt</span>(<span class="string">'012'</span>));   <span class="comment">// true</span></div><div class="line">isNumber(<span class="built_in">parseFloat</span>(<span class="string">'012'</span>)); <span class="comment">// true</span></div><div class="line"></div><div class="line">isNumber(<span class="literal">Infinity</span>);          <span class="comment">// false</span></div><div class="line">isNumber(<span class="literal">NaN</span>);               <span class="comment">// false</span></div><div class="line">isNumber(<span class="literal">null</span>);              <span class="comment">// false</span></div><div class="line">isNumber(<span class="literal">undefined</span>);         <span class="comment">// false</span></div><div class="line">isNumber(<span class="string">''</span>);                <span class="comment">// false</span></div><div class="line">isNumber(<span class="string">'   '</span>);             <span class="comment">// false</span></div><div class="line">isNumber(<span class="string">'foo'</span>);             <span class="comment">// false</span></div><div class="line">isNumber([<span class="number">1</span>]);               <span class="comment">// false</span></div><div class="line">isNumber([]);                <span class="comment">// false</span></div><div class="line">isNumber(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;);    <span class="comment">// false</span></div><div class="line">isNumber(&#123;&#125;);                <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<h2 id="3-array-slice"><a href="#3-array-slice" class="headerlink" title="3.array-slice"></a>3.array-slice</h2><blockquote>
+<p>数组取值</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">slice</span>(<span class="params">arr, start, end</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> len = arr.length;</div><div class="line">  <span class="keyword">var</span> range = [];</div><div class="line"></div><div class="line">  start = idx(len, start);</div><div class="line">  end = idx(len, end, len);</div><div class="line">  </div><div class="line">  <span class="comment">//通过比较start和end的大小，循环将值push进range中，已达到取值的目的</span></div><div class="line">  <span class="keyword">while</span> (start &lt; end) &#123;</div><div class="line">    range.push(arr[start++]);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> range;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">//对pos进行处理，即：开始取值的位置</span></div><div class="line"><span class="comment">// 默认为end或0</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">idx</span>(<span class="params">len, pos, end</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (pos == <span class="literal">null</span>) &#123;</div><div class="line">    pos = end || <span class="number">0</span>;</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (pos &lt; <span class="number">0</span>) &#123;</div><div class="line">    pos = <span class="built_in">Math</span>.max(len + pos, <span class="number">0</span>);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    pos = <span class="built_in">Math</span>.min(pos, len);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> pos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>Example</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> slice = <span class="built_in">require</span>(<span class="string">'array-slice'</span>);</div><div class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>, <span class="string">'g'</span>, <span class="string">'h'</span>, <span class="string">'i'</span>, <span class="string">'j'</span>];</div><div class="line"></div><div class="line">slice(arr, <span class="number">3</span>, <span class="number">6</span>);</div><div class="line"><span class="comment">//=&gt; ['e', 'f', 'g']</span></div></pre></td></tr></table></figure>
+<h2 id="4-array-first"><a href="#4-array-first" class="headerlink" title="4.array-first"></a>4.array-first</h2><blockquote>
+<p>获取数组的第一个元素或者前n个元素</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> isNumber = <span class="built_in">require</span>(<span class="string">'is-number'</span>);</div><div class="line"><span class="keyword">var</span> slice = <span class="built_in">require</span>(<span class="string">'array-slice'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">arrayFirst</span>(<span class="params">arr, num</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">//判断是否为数组</span></div><div class="line">  <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(arr)) &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'array-first expects an array as the first argument.'</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (arr.length === <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="comment">//通过array-slice模块进行取值，并返回结果</span></div><div class="line">  <span class="keyword">var</span> first = slice(arr, <span class="number">0</span>, isNumber(num) ? +num : <span class="number">1</span>);</div><div class="line">  <span class="keyword">if</span> (+num === <span class="number">1</span> || num == <span class="literal">null</span>) &#123;</div><div class="line">    <span class="keyword">return</span> first[<span class="number">0</span>];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> first;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><code>Example</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> first = <span class="built_in">require</span>(<span class="string">'array-first'</span>);</div><div class="line"></div><div class="line">first([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>]);</div><div class="line"><span class="comment">//=&gt; 'a'</span></div><div class="line"></div><div class="line">first([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>], <span class="number">1</span>);</div><div class="line"><span class="comment">//=&gt; 'a'</span></div><div class="line"></div><div class="line">first([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>], <span class="number">3</span>);</div><div class="line"><span class="comment">//=&gt; ['a', 'b', 'c']</span></div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/12/Packages-1/" rel="next" title="Packages">
+                <i class="fa fa-chevron-left"></i> Packages
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="徐俊" />
+          <p class="site-author-name" itemprop="name">徐俊</p>
+           
+              <p class="site-description motion-element" itemprop="description">如果冬天来了，春天还会远吗</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-is-sorted"><span class="nav-number">1.</span> <span class="nav-text">1. is-sorted</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-is-number"><span class="nav-number">2.</span> <span class="nav-text">2.is-number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-array-slice"><span class="nav-number">3.</span> <span class="nav-text">3.array-slice</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-array-first"><span class="nav-number">4.</span> <span class="nav-text">4.array-first</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">皖ICP备17015096号</span>
+  <span class="with-love">
+    <i class="fa fa-leaf"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐俊</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
