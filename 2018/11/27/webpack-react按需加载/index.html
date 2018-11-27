@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="xuj">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="什么是按需加载？按需加载是前端性能优化中的一项重要措施，按需加载是如何定义的呢？顾名思义，指的是当用户触发了动作时才加载对应的功能。触发的动作，是要看具体的业务场景而言，包括但不限于以下几个情况：鼠标点击、输入文字、拉动滚动条，鼠标移动、窗口大小更改等。加载的文件，可以是JS、图片、CSS、HTML等。react按需加载进化了好几个方式，目前最新的方式就是使用react-loadable这个组件.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-router按需加载">
+<meta property="og:url" content="http://yoursite.com/2018/11/27/webpack-react按需加载/index.html">
+<meta property="og:site_name" content="Xuj&#39;s blog">
+<meta property="og:description" content="什么是按需加载？按需加载是前端性能优化中的一项重要措施，按需加载是如何定义的呢？顾名思义，指的是当用户触发了动作时才加载对应的功能。触发的动作，是要看具体的业务场景而言，包括但不限于以下几个情况：鼠标点击、输入文字、拉动滚动条，鼠标移动、窗口大小更改等。加载的文件，可以是JS、图片、CSS、HTML等。react按需加载进化了好几个方式，目前最新的方式就是使用react-loadable这个组件.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/xuj2017/markdownimage/master/images/blog/20181126-01.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xuj2017/markdownimage/master/images/blog/20181126-02.png">
+<meta property="og:updated_time" content="2018-11-27T12:21:37.143Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react-router按需加载">
+<meta name="twitter:description" content="什么是按需加载？按需加载是前端性能优化中的一项重要措施，按需加载是如何定义的呢？顾名思义，指的是当用户触发了动作时才加载对应的功能。触发的动作，是要看具体的业务场景而言，包括但不限于以下几个情况：鼠标点击、输入文字、拉动滚动条，鼠标移动、窗口大小更改等。加载的文件，可以是JS、图片、CSS、HTML等。react按需加载进化了好几个方式，目前最新的方式就是使用react-loadable这个组件.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/xuj2017/markdownimage/master/images/blog/20181126-01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/27/webpack-react按需加载/">
+
+
+
+
+
+  <title>react-router按需加载 | Xuj's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuj's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/webpack-react按需加载/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="徐俊">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuj's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">react-router按需加载</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T19:37:38+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="什么是按需加载？"><a href="#什么是按需加载？" class="headerlink" title="什么是按需加载？"></a>什么是按需加载？</h3><p>按需加载是前端性能优化中的一项重要措施，按需加载是如何定义的呢？顾名思义，指的是当用户触发了动作时才加载对应的功能。触发的动作，是要看具体的业务场景而言，包括但不限于以下几个情况：鼠标点击、输入文字、拉动滚动条，鼠标移动、窗口大小更改等。加载的文件，可以是JS、图片、CSS、HTML等。react按需加载进化了好几个方式，目前最新的方式就是使用react-loadable这个组件.</p>
+<h3 id="React-Loadable"><a href="#React-Loadable" class="headerlink" title="React Loadable"></a>React Loadable</h3><p>Loadable 是一个高阶组件（简单来说，就是把组件作为输入的组件。高阶函数就是把函数作为输入的函数。在 React 里，函数和组件有时是一回事），一个可以构建组件的函数（函数可以是组件），它可以很容易的在组件层面分割代码包</p>
+<h3 id="使用Loadable之前"><a href="#使用Loadable之前" class="headerlink" title="使用Loadable之前"></a>使用Loadable之前</h3><p>创建<code>webpack.config.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry:<span class="string">'./a.js'</span>,</span><br><span class="line">  mode:<span class="string">'development'</span>,</span><br><span class="line">  output:&#123;</span><br><span class="line">    filename:<span class="string">'[name].js'</span>,</span><br><span class="line">    chunkFilename:<span class="string">'[name].js'</span>,<span class="comment">// 设置按需加载后的chunk名字</span></span><br><span class="line">    publicPath:<span class="string">'/dist/'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        exclude: <span class="regexp">/(node_modules|bower_components)/</span>,</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: <span class="string">'babel-loader'</span>,</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    contentBase: <span class="string">'./'</span>,</span><br><span class="line">    compress: <span class="literal">true</span>,</span><br><span class="line">    port: <span class="number">9000</span>,</span><br><span class="line">    hot: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">      <span class="keyword">new</span> webpack.NamedModulesPlugin(),</span><br><span class="line">      <span class="keyword">new</span> webpack.HotModuleReplacementPlugin()</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加<code>.babelrc</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [&quot;@babel/preset-react&quot;,&quot;@babel/preset-env&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加b.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React,&#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</span><br><span class="line">  render()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>this is B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>添加a.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React,&#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDom <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; BrowserRouter <span class="keyword">as</span> Router, Route, Switch,Link &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> B <span class="keyword">from</span> <span class="string">'./b.js'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</span><br><span class="line">render()&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">         &lt;Router&gt;</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">            &lt;Route path=<span class="string">"/B"</span> component=&#123;B&#125;/&gt;</span><br><span class="line">            &lt;Link to=<span class="string">"/B"</span>&gt;to B&lt;<span class="regexp">/Link&gt;&lt;br/</span>&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Router&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ReactDom.render(<span class="xml"><span class="tag">&lt;<span class="name">A</span>/&gt;</span></span>,<span class="built_in">document</span>.querySelector(<span class="string">"#btn"</span>))</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">module</span>.hot) &#123;</span><br><span class="line">    <span class="built_in">module</span>.hot.accept()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用<code>webpack-dev-server</code>启动，发现页面只加载<code>mian.js</code>,点击链接前后并没有发生什么变化<br><img src="https://raw.githubusercontent.com/xuj2017/markdownimage/master/images/blog/20181126-01.png" alt="img1"></p>
+<h3 id="使用Loadable"><a href="#使用Loadable" class="headerlink" title="使用Loadable"></a>使用Loadable</h3><p>修改a.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React,&#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; BrowserRouter <span class="keyword">as</span> Router, Route, Switch,Link &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDom <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> Loadable <span class="keyword">from</span> <span class="string">'react-loadable'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Loading = <span class="function"><span class="params">()</span> =&gt;</span> &lt;div&gt;Loading...&lt;<span class="regexp">/div&gt;;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const B = Loadable(&#123;</span></span><br><span class="line"><span class="regexp">  loader: () =&gt; import('./</span>b.js<span class="string">'),</span></span><br><span class="line"><span class="string">  loading: Loading,</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">export default class A extends Component&#123;</span></span><br><span class="line"><span class="string">  render()&#123;</span></span><br><span class="line"><span class="string">    return &lt;div&gt;</span></span><br><span class="line"><span class="string">      &lt;Router&gt;</span></span><br><span class="line"><span class="string">        &lt;div&gt;</span></span><br><span class="line"><span class="string">          &lt;Route path="/B" component=&#123;B&#125;/&gt;</span></span><br><span class="line"><span class="string">          &lt;Link to="/B"&gt;to B&lt;/Link&gt;&lt;br/&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">      &lt;/Router&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">ReactDom.render(&lt;A/&gt;,document.querySelector("#btn"))</span></span><br><span class="line"><span class="string">if (module.hot) &#123;</span></span><br><span class="line"><span class="string">     module.hot.accept()</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>安装<code>babel-plugin-dynamic-import-webpack</code>,修改<code>.babelrc</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;presets&quot;: [&quot;@babel/preset-react&quot;,&quot;@babel/preset-env&quot;],</span><br><span class="line">    &quot;plugins&quot;: [&quot;dynamic-import-webpack&quot;]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>使用<code>webpack-dev-server</code>启动，发现页面初始加载<code>mian.js</code>,点击后又加载<code>1.js</code>,实现了按需加载</p>
+<p><img src="https://raw.githubusercontent.com/xuj2017/markdownimage/master/images/blog/20181126-02.png" alt="img1"></p>
+<h3 id="嵌套路由按需加载"><a href="#嵌套路由按需加载" class="headerlink" title="嵌套路由按需加载"></a>嵌套路由按需加载</h3><p>修改<code>a.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React,&#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; BrowserRouter <span class="keyword">as</span> Router, Route, Switch,Link &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDom <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> Loadable <span class="keyword">from</span> <span class="string">'react-loadable'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Loading = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> B = Loadable(&#123;</span><br><span class="line">  loader: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./b.js'</span>),</span><br><span class="line">  loading: Loading,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> C = Loadable(&#123;</span><br><span class="line">  loader: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./c.js'</span>),</span><br><span class="line">  loading: Loading,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</span><br><span class="line">  render()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line">      &lt;Router&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &lt;Route path="/B" component=&#123;B&#125;/&gt;</span><br><span class="line">          &lt;Route path="/C" component=&#123;C&#125;/&gt;</span><br><span class="line">          &lt;Link to="/B"&gt;to B&lt;/Link&gt;&lt;br/&gt;</span><br><span class="line">          &lt;Link to="/C"&gt;to C&lt;/Link&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">ReactDom.render(&lt;A/&gt;,document.querySelector("#btn"))</span><br><span class="line">if (module.hot) &#123;</span><br><span class="line">     module.hot.accept()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>增加<code>c.js</code>和<code>d.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> React,&#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Route,Link&#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> Loadable <span class="keyword">from</span> <span class="string">'react-loadable'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Loading = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Loadingc...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> D = Loadable(&#123;</span><br><span class="line">  loader: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./d.js'</span>),</span><br><span class="line">  loading: Loading,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</span><br><span class="line">  render()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      this is C</span></span><br><span class="line">      &lt;Route path="/C/D" component=&#123;D&#125;/&gt;</span><br><span class="line">      &lt;Link to="/C/D"&gt;to D&lt;/Link&gt;</span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>入口文件引入两个动态路由B、C</li>
+<li>c.js中嵌套了路由/C/D</li>
+<li>路由/C/D中使用了按需组件D</li>
+</ul>
+<p>启动后发现正常，实现了按需加载</p>
+<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>import不支持动态路径，是因为webpack需要先扫一遍js文件，找出里面按需加载的部分，进行按需打包，但不会关心内部的js执行上下文，也就是说，在webpack扫描的时候，js中的变量并不会计算出结果，所以import不支持动态路径。所以只能封装非import部分<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> LazyLoad = <span class="function"><span class="params">loader</span> =&gt;</span> Loadable(&#123;</span><br><span class="line">  loader,</span><br><span class="line">  loading:Loading,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>修改<code>a.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React,&#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; BrowserRouter <span class="keyword">as</span> Router, Route, Switch,Link &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDom <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> Loadable <span class="keyword">from</span> <span class="string">'react-loadable'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Loading = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> LazyLoad = <span class="function"><span class="params">loader</span> =&gt;</span> Loadable(&#123;</span><br><span class="line">  loader,</span><br><span class="line">  loading:Loading,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">const</span> B = LazyLoad(<span class="function"><span class="params">()</span>=&gt;</span><span class="keyword">import</span>(<span class="string">'./b.js'</span>));</span><br><span class="line"><span class="keyword">const</span> C = LazyLoad(<span class="function"><span class="params">()</span>=&gt;</span><span class="keyword">import</span>(<span class="string">'./c.js'</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</span><br><span class="line">  render()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line">      &lt;Router&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &lt;Route path="/B" component=&#123;B&#125;/&gt;</span><br><span class="line">          &lt;Route path="/C" component=&#123;C&#125;/&gt;</span><br><span class="line">          &lt;Link to="/B"&gt;to B&lt;/Link&gt;&lt;br/&gt;</span><br><span class="line">          &lt;Link to="/C"&gt;to C&lt;/Link&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">ReactDom.render(&lt;A/&gt;,document.querySelector("#btn"))</span><br><span class="line">if (module.hot) &#123;</span><br><span class="line">     module.hot.accept()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="按需加载-router-config"><a href="#按需加载-router-config" class="headerlink" title="按需加载+router config"></a>按需加载+router config</h3><p>添加<code>LazyLoad.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> Loadable <span class="keyword">from</span> <span class="string">'react-loadable'</span>;</span><br><span class="line"><span class="keyword">const</span> Loading = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> loader =&gt; Loadable(&#123;</span><br><span class="line">  loader,</span><br><span class="line">  loading:Loading,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>创建<code>routes.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> LazyLoad <span class="keyword">from</span> <span class="string">'./LazyLoad'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">"/B"</span>,</span><br><span class="line">    component: LazyLoad(<span class="function"><span class="params">()</span>=&gt;</span><span class="keyword">import</span>(<span class="string">'./b.js'</span>))</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">"/C"</span>,</span><br><span class="line">    component: LazyLoad(<span class="function"><span class="params">()</span>=&gt;</span><span class="keyword">import</span>(<span class="string">'./c.js'</span>)),</span><br><span class="line">    routes: [</span><br><span class="line">      &#123;</span><br><span class="line">        path: <span class="string">"/C/D"</span>,</span><br><span class="line">        component: LazyLoad(<span class="function"><span class="params">()</span>=&gt;</span><span class="keyword">import</span>(<span class="string">'./d.js'</span>))</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        path: <span class="string">"/C/E"</span>,</span><br><span class="line">        component: LazyLoad(<span class="function"><span class="params">()</span>=&gt;</span><span class="keyword">import</span>(<span class="string">'./e.js'</span>))</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure></p>
+<p>添加<code>utils.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Route&#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> RouteWithSubRoutes = <span class="function"><span class="params">route</span> =&gt;</span> (</span><br><span class="line">  &lt;Route</span><br><span class="line">    path=&#123;route.path&#125;</span><br><span class="line">    render=&#123;props =&gt; (</span><br><span class="line">      <span class="comment">// pass the sub-routes down to keep nesting</span></span><br><span class="line">      &lt;route.component &#123;...props&#125; routes=&#123;route.routes&#125; /&gt;</span><br><span class="line">    )&#125;</span><br><span class="line">  /&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>修改<code>a.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React,&#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; BrowserRouter <span class="keyword">as</span> Router, Route, Switch,Link &#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDom <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;RouteWithSubRoutes&#125; <span class="keyword">from</span> <span class="string">'./utils'</span>;</span><br><span class="line"><span class="keyword">import</span> routes <span class="keyword">from</span> <span class="string">'./routes'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</span><br><span class="line">  render()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line">      &lt;Router&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &lt;Link to="/B"&gt;to B&lt;/Link&gt;&lt;br/&gt;</span><br><span class="line">          &lt;Link to="/C"&gt;to C&lt;/Link&gt;</span><br><span class="line">          &#123;routes.map((route, i) =&gt; &lt;RouteWithSubRoutes key=&#123;i&#125; &#123;...route&#125; /&gt;)&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/Router&gt;</span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"><span class="xml">ReactDom.render(<span class="tag">&lt;<span class="name">A</span>/&gt;</span>,document.querySelector("#btn"))</span></span><br><span class="line"><span class="xml">if (module.hot) &#123;</span></span><br><span class="line"><span class="xml">     module.hot.accept()</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>修改<code>c.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React,&#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;RouteWithSubRoutes&#125; <span class="keyword">from</span> <span class="string">'./utils'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Link&#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (&#123; routes &#125;) =&gt; (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    <span class="keyword">this</span> is C</span><br><span class="line">    &lt;Link to=<span class="string">"/C/D"</span>&gt;to D&lt;<span class="regexp">/Link&gt;</span></span><br><span class="line"><span class="regexp">    &lt;Link to="/</span>C/E<span class="string">"&gt;to E&lt;/Link&gt;</span></span><br><span class="line"><span class="string">    &#123;routes.map((route, i) =&gt; &lt;RouteWithSubRoutes key=&#123;i&#125; &#123;...route&#125; /&gt;)&#125;</span></span><br><span class="line"><span class="string">  &lt;/div&gt;</span></span><br><span class="line"><span class="string">);</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>引入RouteWithSubRoutes工具方法</li>
+<li>暴露的函数接受一个参数routes</li>
+</ul>
+<blockquote>
+<p>文章参考自<a href="https://juejin.im/post/5bf61082f265da616a474b5c?utm_source=gold_browser_extension" target="_blank" rel="noopener">脑阔疼的webpack按需加载</a></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/23/mpvue开发cnode社区问题记录/" rel="next" title="mpvue开发cnode社区问题记录">
+                <i class="fa fa-chevron-left"></i> mpvue开发cnode社区问题记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="徐俊">
+          <p class="site-author-name" itemprop="name">徐俊</p>
+           
+              <p class="site-description motion-element" itemprop="description">以梦为马，明日天涯</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuj2017" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              其他
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zhangxinxu.com/" title="张鑫旭" target="_blank">张鑫旭</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是按需加载？"><span class="nav-number">1.</span> <span class="nav-text">什么是按需加载？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-Loadable"><span class="nav-number">2.</span> <span class="nav-text">React Loadable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Loadable之前"><span class="nav-number">3.</span> <span class="nav-text">使用Loadable之前</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Loadable"><span class="nav-number">4.</span> <span class="nav-text">使用Loadable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套路由按需加载"><span class="nav-number">5.</span> <span class="nav-text">嵌套路由按需加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装"><span class="nav-number">6.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按需加载-router-config"><span class="nav-number">7.</span> <span class="nav-text">按需加载+router config</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">皖ICP备17015096号</span>
+  <span class="with-love">
+    <i class="fa fa-leaf"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐俊</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="true"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</body>
+</html>
