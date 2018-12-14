@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="charts,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="最近在做一个新项目，其中运用了大量的图表，主要有折线图、柱状图、饼图、雷达图四种;在考虑可扩展性的情况下，优先选择了ECharts,ECharts是百度开源的一款图表插件;  折线图折线图是最经常使用的图表之一，但是在样式上往往又不一样，经常需要按照设计需求定制，在本项目遇到的折线图问题主要是样式定制及双坐标轴不对齐的问题,以项目中的一个图表为例 上面的是设计图表 上面是Echart的官网基本图">
+<meta name="keywords" content="charts">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EChars的那些事儿">
+<meta property="og:url" content="http://yoursite.com/2018/12/13/EChars的那些事儿/index.html">
+<meta property="og:site_name" content="Xuj&#39;s blog">
+<meta property="og:description" content="最近在做一个新项目，其中运用了大量的图表，主要有折线图、柱状图、饼图、雷达图四种;在考虑可扩展性的情况下，优先选择了ECharts,ECharts是百度开源的一款图表插件;  折线图折线图是最经常使用的图表之一，但是在样式上往往又不一样，经常需要按照设计需求定制，在本项目遇到的折线图问题主要是样式定制及双坐标轴不对齐的问题,以项目中的一个图表为例 上面的是设计图表 上面是Echart的官网基本图">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/xuj2017/markdownimage/master/images/blog/20181214-01.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xuj2017/markdownimage/master/images/blog/20181214-02.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xuj2017/markdownimage/master/images/blog/20181214-03.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xuj2017/markdownimage/master/images/blog/20181214-04.png">
+<meta property="og:updated_time" content="2018-12-14T09:52:39.385Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EChars的那些事儿">
+<meta name="twitter:description" content="最近在做一个新项目，其中运用了大量的图表，主要有折线图、柱状图、饼图、雷达图四种;在考虑可扩展性的情况下，优先选择了ECharts,ECharts是百度开源的一款图表插件;  折线图折线图是最经常使用的图表之一，但是在样式上往往又不一样，经常需要按照设计需求定制，在本项目遇到的折线图问题主要是样式定制及双坐标轴不对齐的问题,以项目中的一个图表为例 上面的是设计图表 上面是Echart的官网基本图">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/xuj2017/markdownimage/master/images/blog/20181214-01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/13/EChars的那些事儿/">
+
+
+
+
+
+  <title>EChars的那些事儿 | Xuj's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuj's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/13/EChars的那些事儿/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="徐俊">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuj's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">EChars的那些事儿</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-13T10:08:44+08:00">
+                2018-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>最近在做一个新项目，其中运用了大量的图表，主要有折线图、柱状图、饼图、雷达图四种;在考虑可扩展性的情况下，优先选择了<code>ECharts</code>,<a href="http://echarts.baidu.com/index.html" target="_blank" rel="noopener">ECharts</a>是百度开源的一款图表插件;</p>
+</blockquote>
+<h3 id="折线图"><a href="#折线图" class="headerlink" title="折线图"></a>折线图</h3><p>折线图是最经常使用的图表之一，但是在样式上往往又不一样，经常需要按照设计需求定制，在本项目遇到的折线图问题主要是样式定制及双坐标轴不对齐的问题,以项目中的一个图表为例</p>
+<p><img src="https://raw.githubusercontent.com/xuj2017/markdownimage/master/images/blog/20181214-01.png" alt="目标图表"><br>上面的是设计图表</p>
+<p><img src="https://raw.githubusercontent.com/xuj2017/markdownimage/master/images/blog/20181214-02.png" alt="基本图表"><br>上面是Echart的官网基本图表</p>
+<p>配置解析</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">               ......</span><br><span class="line">                xAxis: [</span><br><span class="line">                    &#123;</span><br><span class="line"></span><br><span class="line">                        type: <span class="string">'category'</span>,</span><br><span class="line">                        data: data.XData,<span class="comment">//横坐标值</span></span><br><span class="line">                        axisLine: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;,<span class="comment">//隐藏坐标轴</span></span><br><span class="line">                        axisTick: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;<span class="comment">//隐藏坐标轴上刻度线</span></span><br><span class="line">                    &#125;</span><br><span class="line">                ],</span><br><span class="line">                yAxis: [</span><br><span class="line">                    <span class="comment">//使用左右双纵坐标</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        type: <span class="string">'value'</span>,</span><br><span class="line">                        scale: <span class="literal">true</span>,</span><br><span class="line">                        name: <span class="string">'股价/元'</span>,</span><br><span class="line">                        axisLine: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;,<span class="comment">//隐藏坐标轴</span></span><br><span class="line">                        axisTick: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;<span class="comment">//隐藏坐标轴上刻度线</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        type: <span class="string">'value'</span>,</span><br><span class="line">                        scale: <span class="literal">true</span>,</span><br><span class="line">                        name: <span class="string">'评分/分'</span>,</span><br><span class="line">                        axisLine: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">                        axisTick: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">                     &#125;</span><br><span class="line">                ],</span><br><span class="line">                series: [</span><br><span class="line">                &#123;</span><br><span class="line">                    name: <span class="string">'股价'</span>,</span><br><span class="line">                    type: <span class="string">'line'</span>,</span><br><span class="line">                    symbol: <span class="string">"none"</span>,<span class="comment">//隐藏折线图上的圆点</span></span><br><span class="line">                    connectNulls: <span class="literal">true</span>,<span class="comment">//连接空坐标点</span></span><br><span class="line">                    itemStyle: &#123; <span class="comment">//线的颜色</span></span><br><span class="line">                        color: <span class="string">'#2fade6'</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    lineStyle: &#123; <span class="comment">//线的宽度</span></span><br><span class="line">                        width: <span class="number">1</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    data: data.Ydata.Price<span class="comment">//纵坐标值</span></span><br><span class="line"></span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    name: <span class="string">'评分'</span>,</span><br><span class="line">                    type: <span class="string">'line'</span>,</span><br><span class="line">                    yAxisIndex: <span class="number">1</span>,<span class="comment">//选择右侧纵坐标</span></span><br><span class="line">                    symbol: <span class="string">"none"</span>,</span><br><span class="line">                    connectNulls: <span class="literal">true</span>,</span><br><span class="line">                    itemStyle: &#123;</span><br><span class="line">                        color: <span class="string">'#ed6a13'</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    lineStyle: &#123;</span><br><span class="line">                        width: <span class="number">1</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    data: data.Ydata.Score<span class="comment">//纵坐标值</span></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+<p>完成上述的配置后，发现样式基本一致，但是左右两个纵坐标刻度错乱，像这样<br> <img src="https://raw.githubusercontent.com/xuj2017/markdownimage/master/images/blog/20181214-03.png" alt="基本图表"></p>
+<p>查阅<a href="http://echarts.baidu.com/option.html#yAxis" target="_blank" rel="noopener">官方文档</a>发现，刻度值的个数及间隔需要通过四个参数配置，即：<code>max</code>、<code>min</code>、<code>splitNumber</code>、<code>interval</code>;</p>
+<ul>
+<li><code>max</code>:坐标值刻度最大值，数据类型可以是number, string, function,默认值为null</li>
+<li><code>min</code>:坐标值刻度最小值，数据类型可以是number, string, function,默认值为null</li>
+<li><code>splitNumber</code>:坐标轴的分割段数，数据类型是number，默认值为5</li>
+<li><code>interval</code>:坐标轴刻度标签的显示间隔</li>
+</ul>
+<p>写一个通用方法<code>computeInterval</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* @param &#123;Array&#125; arr 数组值</span></span><br><span class="line"><span class="comment">* @param &#123;Number&#125; spliNum 分割段数</span></span><br><span class="line"><span class="comment">* @param &#123;Boole&#125; isSym 是否上下对称</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">computeInterval</span>(<span class="params">arr, spliNum, isSym</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//默认返回类型</span></span><br><span class="line">    <span class="keyword">var</span> defaultResult = &#123;</span><br><span class="line">                <span class="string">"max"</span>: <span class="literal">null</span>,</span><br><span class="line">                <span class="string">"min"</span>: <span class="literal">null</span>,</span><br><span class="line">                <span class="string">"interval"</span>: <span class="string">'auto'</span>,</span><br><span class="line">                <span class="string">"spliNum"</span>: <span class="number">5</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (arr &amp;&amp; arr.length) &#123;</span><br><span class="line">            spliNum = spliNum || <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> max = <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>,arr); <span class="comment">//获取最大值</span></span><br><span class="line">            <span class="keyword">var</span> min = <span class="built_in">Math</span>.min.apply(<span class="literal">null</span>,arr); <span class="comment">//获取最小值</span></span><br><span class="line">           </span><br><span class="line">           <span class="comment">//取坐标轴的最大最小值，这里取最大值的1.2倍为上限</span></span><br><span class="line">            <span class="keyword">if</span> (isSym) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">Math</span>.abs(max) &gt; <span class="built_in">Math</span>.abs(min)) &#123;</span><br><span class="line">                    max = <span class="built_in">parseFloat</span>((<span class="built_in">Math</span>.abs(max) * <span class="number">1.2</span>).toFixed(<span class="number">2</span>));</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    max = <span class="built_in">parseFloat</span>((<span class="built_in">Math</span>.abs(min) * <span class="number">1.2</span>).toFixed(<span class="number">2</span>));</span><br><span class="line">                &#125;</span><br><span class="line">                min = -max;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (max &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    max = <span class="built_in">Math</span>.ceil(max) * <span class="number">1.2</span></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    max = <span class="built_in">Math</span>.floor(max) * <span class="number">0.8</span></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (min &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    min = <span class="built_in">Math</span>.floor(min) * <span class="number">0.8</span></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    min = <span class="built_in">Math</span>.ceil(min) * <span class="number">1.2</span></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//获取分隔段数</span></span><br><span class="line">            <span class="keyword">var</span> interval = ((max - min) / spliNum) || <span class="string">'auto'</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                <span class="string">"max"</span>: max,</span><br><span class="line">                <span class="string">"min"</span>: min,</span><br><span class="line">                <span class="string">"interval"</span>: interval,</span><br><span class="line">                <span class="string">"spliNum"</span>: spliNum</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> defaultResult;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="keyword">return</span> defaultResult;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改下上述配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//根据纵坐标值计算分隔线</span></span><br><span class="line"> <span class="keyword">var</span> res1 = calInterval(data.Ydata.Price);<span class="comment">//左</span></span><br><span class="line"> <span class="keyword">var</span> res2 = calInterval(data.Ydata.Score);<span class="comment">//右</span></span><br><span class="line">....</span><br><span class="line">yAxis: [</span><br><span class="line">    <span class="comment">//使用左右双纵坐标</span></span><br><span class="line">    &#123;</span><br><span class="line">        type: <span class="string">'value'</span>,</span><br><span class="line">        scale: <span class="literal">true</span>,</span><br><span class="line">        name: <span class="string">'股价/元'</span>,</span><br><span class="line">        axisLine: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;,<span class="comment">//隐藏坐标轴</span></span><br><span class="line">        axisTick: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;,<span class="comment">//隐藏坐标轴上刻度线</span></span><br><span class="line">        min: res1.max,</span><br><span class="line">        max: res1.min,</span><br><span class="line">        splitNumber: res1.spliNum,</span><br><span class="line">        interval: res1.interval,</span><br><span class="line">        axisLabel: &#123;</span><br><span class="line">            formatter:<span class="function"><span class="keyword">function</span>(<span class="params">value, index</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> value.toFixed(<span class="number">2</span>) <span class="comment">//坐标刻度保留两个小数点</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        type: <span class="string">'value'</span>,</span><br><span class="line">        scale: <span class="literal">true</span>,</span><br><span class="line">        name: <span class="string">'评分/分'</span>,</span><br><span class="line">        axisLine: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">        axisTick: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">         min: res2.max,</span><br><span class="line">            max: res2.min,</span><br><span class="line">            splitNumber: res2.spliNum,</span><br><span class="line">            interval: res2.interval,</span><br><span class="line">            axisLabel: &#123;</span><br><span class="line">                formatter:<span class="function"><span class="keyword">function</span>(<span class="params">value, index</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> value.toFixed(<span class="number">2</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line">.....</span><br></pre></td></tr></table></figure>
+<p>最终完成效果<img src="https://raw.githubusercontent.com/xuj2017/markdownimage/master/images/blog/20181214-04.png" alt="最终效果"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/charts/" rel="tag"># charts</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/27/webpack-react按需加载/" rel="next" title="react-router按需加载">
+                <i class="fa fa-chevron-left"></i> react-router按需加载
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="徐俊">
+          <p class="site-author-name" itemprop="name">徐俊</p>
+           
+              <p class="site-description motion-element" itemprop="description">以梦为马，明日天涯</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuj2017" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              其他
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zhangxinxu.com/" title="张鑫旭" target="_blank">张鑫旭</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#折线图"><span class="nav-number">1.</span> <span class="nav-text">折线图</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">皖ICP备17015096号</span>
+  <span class="with-love">
+    <i class="fa fa-leaf"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐俊</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="true"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</body>
+</html>
